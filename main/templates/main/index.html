@@ -1,0 +1,64 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="heading-section">Выберите тип, изготовителя и модель устройства чтобы узнать стоимость ремонта<br></h2>
+	</div>
+    <div class="tabulation">
+		<ul class="nav nav-pills nav-fill d-md-flex d-block">
+            {% if categories %}
+                {% for category in categories %}
+                    {% ifchanged category.super_category %}
+						<li class="nav-item">
+							<a class="nav-link py-3" data-toggle="tab" href="#{{ category.super_category.name }}">{{ category.super_category.name }}</a>
+						</li>
+                    {% endifchanged %}
+                {% endfor %}
+            {% endif %}
+		</ul>
+
+		<div class="tab-content rounded mt-md-3">
+            {% if categories %}
+                {% for category in categories %}
+					<div class="tab-pane container p-4" id="{{ category.super_category.name }}">
+
+						<div class="tabulation">
+							<ul class="nav nav-pills nav-fill d-md-flex d-block">
+                                {% for category_manufacturer in categories %}
+                                    {% if category.super_category.name == category_manufacturer.super_category.name %}
+                                        <li class="nav-item">
+							                <a class="nav-link py-3" data-toggle="tab" href="#{{ category_manufacturer.name }}">{{ category_manufacturer.name }}</a>
+							            </li>
+								    {% endif %}
+								{% endfor %}
+							</ul>
+							<div class="tab-content rounded mt-md-3">
+								{% for category_manufacturer in categories %}
+                                    {% if category.super_category.name == category_manufacturer.super_category.name %}
+                                        <div class="tab-pane container p-4" id="{{ category_manufacturer.name }}">
+											{% if devices %}
+								                {% for device in devices %}
+								                    {% if category_manufacturer.id == device.category_id %}
+								                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#device{{ device.id }}">{{ device.name }}</button>
+
+															<div class="modal fade" id="device{{ device.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+															    {% include 'main/modal.html' with device_current=device %}
+									                        </div>
+
+													{% endif %}
+												{% endfor %}
+											{% endif %}
+										</div>           
+                                    {% endif %}
+                                {% endfor %}
+							</div>
+						</div>
+
+					</div>
+                {% endfor %}
+            {% endif %}
+		</div>
+	</div>
+{% endblock %}
