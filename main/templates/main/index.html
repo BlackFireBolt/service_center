@@ -1,64 +1,197 @@
 {% extends "layout/basic.html" %}
 
 {% load bootstrap4 %}
+{% load static %}
+{% load easy_maps_tags %}
 
 {% block content %}
-    <div class="container">
-        <h2 class="heading-section">Выберите тип, изготовителя и модель устройства чтобы узнать стоимость ремонта<br></h2>
-	</div>
-    <div class="tabulation">
-		<ul class="nav nav-pills nav-fill d-md-flex d-block">
-            {% if categories %}
-                {% for category in categories %}
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<div class="section">
+      <div class="container">
+	  <div class="row justify-content-center">
+	   <h2 class="title">Выберите тип устройства<br></h2>
+	   </div>
+{% if categories %}
+	  <div class="row justify-content-center" id="firstLevel">
+	  
+	            {% for category in categories %}
                     {% ifchanged category.super_category %}
-						<li class="nav-item">
-							<a class="nav-link py-3" data-toggle="tab" href="#{{ category.super_category.name }}">{{ category.super_category.name }}</a>
-						</li>
-                    {% endifchanged %}
+					<div class="col">
+					<button class="btn btn-primary btn-round" id="{{ category.super_category.name }}Button">{{ category.super_category.name }}</button>
+                   </div> 
+				   {% endifchanged %}
                 {% endfor %}
-            {% endif %}
-		</ul>
+	  </div>
 
-		<div class="tab-content rounded mt-md-3">
-            {% if categories %}
-                {% for category in categories %}
-					<div class="tab-pane container p-4" id="{{ category.super_category.name }}">
-
-						<div class="tabulation">
-							<ul class="nav nav-pills nav-fill d-md-flex d-block">
-                                {% for category_manufacturer in categories %}
+	            {% for category in categories %}
+				{% ifchanged category.super_category %}
+	  <div class="row justify-content-center second-level" id="{{ category.super_category.name }}">
+	  
+	                            {% for category_manufacturer in categories %}
                                     {% if category.super_category.name == category_manufacturer.super_category.name %}
-                                        <li class="nav-item">
-							                <a class="nav-link py-3" data-toggle="tab" href="#{{ category_manufacturer.name }}">{{ category_manufacturer.name }}</a>
-							            </li>
-								    {% endif %}
+									<div class="col">
+									<button class="btn btn-primary btn-round" id="{{ category_manufacturer.name }}Button">{{ category_manufacturer.name }}</button>
+								    </div>
+									{% endif %}
 								{% endfor %}
-							</ul>
-							<div class="tab-content rounded mt-md-3">
-								{% for category_manufacturer in categories %}
-                                    {% if category.super_category.name == category_manufacturer.super_category.name %}
-                                        <div class="tab-pane container p-4" id="{{ category_manufacturer.name }}">
-											{% if devices %}
+								<div class="col">
+								<button class="btn btn-primary btn-round" id="{{ category.super_category.name }}BackButton">Назад</button>
+								</div>
+								<script>
+				                  $("#{{ category.super_category.name }}Button").click(function(){
+					                        $("#firstLevel").hide("slow", function(){
+												$("#{{ category.super_category.name }}").show("slow");
+												});
+					                        
+					                          });
+
+										$("#{{ category.super_category.name }}BackButton").click(function(){
+					$("#{{ category.super_category.name }}").hide("slow", function(){
+						$("#firstLevel").show("slow");
+					});
+					
+					});	  
+				                </script>
+	  
+	  </div>
+	  {% endifchanged %}
+	             {% endfor %}
+	
+	  {% for category in categories %}
+	  {% ifchanged category.super_category %}
+	  {% for category_manufacturer in categories %}
+       {% if category.super_category.name == category_manufacturer.super_category.name %}
+	   {% if devices %}
+	  <div class="row justify-content-center third-level" id="{{ category_manufacturer.name }}">
+	  
+	  
 								                {% for device in devices %}
 								                    {% if category_manufacturer.id == device.category_id %}
-								                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#device{{ device.id }}">{{ device.name }}</button>
+								                            <div class="col">
+															<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#device{{ device.id }}">{{ device.name }}</button>
 
 															<div class="modal fade" id="device{{ device.id }}" tabindex="-1" role="dialog" aria-hidden="true">
 															    {% include 'main/modal.html' with device_current=device %}
 									                        </div>
-
+</div>
 													{% endif %}
 												{% endfor %}
-											{% endif %}
-										</div>           
-                                    {% endif %}
-                                {% endfor %}
-							</div>
-						</div>
+											<div class="col">
+											<button class="btn btn-primary btn-round" id="{{ category_manufacturer.name }}BackButton">Назад</button>
+								 </div>
+								 <script>
+				                  $("#{{ category_manufacturer.name }}Button").click(function(){
+					                        $("#{{ category.super_category.name }}").hide("slow");
+					                        $("#{{ category_manufacturer.name }}").show("slow");
+					                          });
 
-					</div>
-                {% endfor %}
-            {% endif %}
-		</div>
+										$("#{{ category_manufacturer.name }}BackButton").click(function(){
+					$("#{{ category_manufacturer.name }}").hide("slow");
+					$("#{{ category.super_category.name }}").show("slow");
+					});	  
+				                </script>
+
+	  
+	  </div>
+	  {% endif %}
+	  {% endif %}
+	{% endfor %}
+	{% endifchanged %}
+	{% endfor %}
+{% endif %}
+	  </div>
+    </div>
+
+
+	<div class="section section-basic">
+      <div class="container ">
+	  <div class="row justify-content-center">
+      <h2 class="title">Выкупим ваше мобильное устройство!</h2>
+      </div>
+	  </div>
+    </div>
+
+
+
+
+	<div class="section section-grey">
+      <div class="container">
+      <div class="row">
+	  
+	  <div class="col-lg-6 col-md col-sm">
+	  <img src="{% static '/img/Layer-1-485x392.png' %}">
+	  </div>
+	  
+	  <div class="col-lg-6 col-md col-sm">
+	  <h3 class="title">Только качественный и быстрый ремонт</h3>
+                                        <h4 class="subheading">Квалифицированные специалисты</h4>
+                                        <p>Мы знаем, что ваше устройство важно для вас, поэтому мы стремимся сделать ремонт как можно быстрее.</p>
+   <ul>
+    <li>Ремонт от 30 минут</li>
+    <li>Бесплатная диагностика</li>
+    <li>Гарантия 90 дней</li>
+    <li>Опытные специалисты</li>
+    <li>Расположены в центре Минска</li>
+</ul>
+
+<a href="{% url 'main:other' page="about" %}" class="btn btn-round btn-info" role="button" aria-disabled="true">
+  Узнать больше <i class="material-icons">arrow_forward</i>
+</a>
+	  </div>
+
+	  </div>
+      </div>
+    </div>
+    
+	<div class="section section-basic">
+      <div class="container">
+      <div class="row justify-content-center">
+    <h2 class="title">Часто задаваемые вопросы</h2>
 	</div>
+	<div class="row justify-content-center">
+	<h3 class="subheading">Не бойтесь спрашивать!</h3>
+    </div>
+    <div class="row">
+
+		<div class="col-md-6">
+			<h4 class="title">Мое устройство не включается</h4>
+            <p>Не включенное электронное устройство может быть результатом многих вещей. Чаще всего возникает неисправность материнской платы или аккумулятора. Мы можем диагностировать целый ряд проблем и заменить только то, что необходимо.</p>
+		</div>
+        <div class="col-md-6">
+			<h4 class="title">Что произойдет, если вы не сможете починить моё устройство?</h4>
+            <p>Если мы не сможем починить ваше устройство, мы свяжемся с вами, чтобы обсудить ваши варианты. Мы можем предложить вам устройство для замены за дополнительную плату. </p>
+		</div>
+        <div class="col-md-6">
+			<h4 class="title">Мой экран не работает</h4>
+            <p>Многие сенсорные экраны не будут работать, если устройство стало жертвой сильного падения или если устройство ранее было «отремонтировано» и подлинный экран не использовался при замене. Все наши запасные части поставляются с 6-месячной гарантией. </p>
+		</div>
+		
+        <div class="col-md-6">
+			<h4 class="title">Какова средняя продолжительность ремонта?</h4>
+            <p>Мы стараемся отремонтировать ваше устройство в максимально короткие сроки.
+Диагностика составляет от 15 до 30 минут. Поэтому среднее время ремонта от 2 часов. </p>
+		</div>
+		
+        <div class="col-md-6">
+			<h4 class="title">Уронил телефон в воду</h4>
+            <p>Некоторые считают, что положить телефон в чашу с рисом решит все ваши проблемы. Но это не так, и иногда ущерб уже неисправим. </p>
+		</div>
+		
+        <div class="col-md-6">
+			<h4 class="title">Могу ли я передать свое устройство через знакомых?</h4>
+            <p>Да. Но нам важно сохранять связь с владельцем устройства, чтобы избежать каких либо дальнейших проблем. </p>
+		</div>
+      </div>
+    </div>
+</div>
+
+	<div class="section section-basic">
+      <div class="container">
+	  <div class="row justify-content-center"><h2 class="title">Наше месторасположение</h2></div>
+      <div class="row justify-content-center">
+	  
+            {% easy_map "Minsk, Surganova 57B"  640 480 using "easy_maps/map.html" %}
+        </div> 
+      </div>
+    </div>
 {% endblock %}

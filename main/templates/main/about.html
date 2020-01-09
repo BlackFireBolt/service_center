@@ -1,23 +1,124 @@
 {% extends "layout/basic.html" %}
 
+{% load static %}
+
+{% block title %}
+    О нас
+{% endblock title %}
+
+{% block header %}
+<div class="page-header page-header-other header-filter clear-filter blue-filter" data-parallax="true" style="background-image: url({% static 'img/bg-test.jpg' %});">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="title">О нас</h1>
+                <h4>Немного о нашей работе</h4>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock header %}
+
 {% block content %}
-<h2>О сайте</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis finibus augue, id pellentesque nisl dignissim consectetur. Aliquam 
-semper turpis dolor, dictum posuere metus rhoncus posuere. Aenean sed nunc dictum, ornare lacus quis, pulvinar justo. Mauris
- varius vitae leo sit amet suscipit. Vivamus ut lectus sem. Aenean hendrerit venenatis arcu vitae interdum. Aliquam tincidunt
-  ligula a dapibus mollis. Nunc orci turpis, aliquet vitae facilisis nec, ultricies in risus. Lorem ipsum dolor sit amet, consectetur
-   adipiscing elit. Morbi nisl arcu, porta at tortor ac, ullamcorper facilisis ligula. Suspendisse eget tellus a nibh pharetra imperdiet quis vitae nulla. 
-   Donec eu luctus mauris.</p>
+<div class="section section-basic">
+    <div class="container">
+    <div class="row">
+                        <div class="col-md-6 how-img">
+                            <img src="{% static '/img/icons/iPhoneX.png' %}" class="rounded-circle img-fluid" alt=""/>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="title">Лучший сервис для вашего смартфона</h3>
+                                        <h4 class="subheading">Только профессионалы занимаются ремонтом ваших устройств по ремонту устройств</h4>
+                        <p class="text-muted">Мы знаем, как ваше устройство важно для вас, поэтому мы стремимся вернуть ваше устройство в максимально короткие сроки.
+Когда вы принесёте свое устройство нам, наши специалисты проведут бесплатную диагностику и после согласования с вами начнут ремонт, исправив возникшую проблему. После того, как он будет отремонтирован, мы вернем вам устройство в его первозданном виде.
+</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="title">Большинство ремонтов выполнены менее чем за 2 часа</h3>
+                                        <h4 class="subheading">Быстрый и качественный ремонт</h4>
+                                        <p>Мы знаем, что ваше устройство важно для вас, поэтому мы стремимся сделать ремонт как можно быстрее.</p>
+   <ul>
+    <li>Ремонт от 30 минут</li>
+    <li>Бесплатная диагностика</li>
+    <li>Гарантия 90 дней</li>
+    <li>Опытные специалисты</li>
+    <li>Расположены в центре Минска</li>
+</ul>
+                        </div>
+                        <div class="col-md-6 how-img">
+                            <img src="{% static '/img/icons/google-pixel2-xl-v02.png' %}" class="rounded-circle img-fluid" alt=""/>
+                        </div>
+                    </div>
+                
+</div>
+</div>
+<div class="section section-timeline text-light">
+    <div class="container">
+<div class="row">
 
-<p>Fusce consequat nisi vitae convallis vestibulum. Nam maximus ultrices diam, eget porta leo pulvinar vitae. Maecenas placerat est vel diam tincidunt 
-dictum. In vitae pulvinar mauris, ut varius augue. Quisque porttitor diam iaculis, egestas enim id, pellentesque ipsum. Nunc dignissim erat vitae 
-varius varius. Vestibulum varius ante placerat, auctor erat sed, vulputate neque. Nullam diam tortor, varius sed massa id, fermentum elementum urna. 
-Sed rhoncus neque in pharetra egestas. Donec eget neque eu erat scelerisque bibendum. Duis ullamcorper tristique aliquet. Fusce auctor posuere sem, 
-eget malesuada sem vehicula sed. Phasellus viverra tincidunt euismod. Aenean in dui neque.</p>
+		<div class="col-md-6 offset-md-3">
+			<h2>Три этапа нашего ремонта</h2>
+			<ul class="timeline">
+				<li>
+					<h3>Принесите нам свое устройство</h3>
+                    <img src="{% static '/img/icons/Vector-Smart-Object.png' %}" class="float-right attachment-full" alt="" width="55" height="55">
+					<p>Выберите нужный вам ремонт. Свяжитесь с нашим специалистом для консультации. Принесите ваше устройство в наш уютный сервисный центр.</p>
+                    
+				</li>
+				<li>
+					<h3>Мы немедленно приступим к работе</h3>
+                    <img src="{% static '/img/icons/Vector-Smart-Object-1.png' %}" class="float-right attachment-full" alt="" width="55" height="55">
+					<p>Как только мы получим ваше устройство, квалифицированный специалист начнет диагностировать проблемы. После завершения ремонта ваше устройство будет возвращено вам в первозданном виде.</p>
+				</li>
+				<li>
+					<h3>Заберите ваше устройство</h3>
+                    <img src="{% static '/img/icons/Vector-Smart-Object-2.png' %}" class="float-right attachment-full" alt="" width="55" height="55">
+					<p>После завершения всех необходимых процедур ремонта, мы сразу сообщим вам и вы получите своё исправное устройство.</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+    <div class="row justify-content-center">
+    <h2 class="title">Часто задаваемые вопросы</h2>
+    </div>
+    <div class="row">
 
-<p>Sed auctor ligula eget enim auctor tristique. Donec lacinia tellus at eros iaculis laoreet. Nullam tincidunt lacus dignissim arcu eleifend tempus. 
-Sed malesuada pretium dolor vitae facilisis. Phasellus rutrum iaculis blandit. Sed auctor erat mollis est rhoncus, eget vulputate est mollis. 
-Suspendisse nec erat malesuada, auctor mauris ut, condimentum risus. Integer blandit mi urna. Sed faucibus nisl a quam semper, in tempor risus consectetur. 
-Curabitur a magna varius odio pulvinar interdum. Suspendisse id purus condimentum, tincidunt erat nec, gravida sem. Nulla suscipit urna est, sed egestas 
-felis faucibus at. Nullam molestie nisi massa, ac rutrum nisi pulvinar at.</p>
+		<div class="col-md-6">
+			<h4 class="title">Мое устройство не включается</h4>
+            <p>Не включенное электронное устройство может быть результатом многих вещей. Чаще всего возникает неисправность материнской платы или аккумулятора. Мы можем диагностировать целый ряд проблем и заменить только то, что необходимо.</p>
+		</div>
+        <div class="col-md-6">
+			<h4 class="title">Что произойдет, если вы не сможете починить моё устройство?</h4>
+            <p>Если мы не сможем починить ваше устройство, мы свяжемся с вами, чтобы обсудить ваши варианты. Мы можем предложить вам устройство для замены за дополнительную плату. </p>
+		</div>
+        <div class="col-md-6">
+			<h4 class="title">Мой экран не работает</h4>
+            <p>Многие сенсорные экраны не будут работать, если устройство стало жертвой сильного падения или если устройство ранее было «отремонтировано» и подлинный экран не использовался при замене. Все наши запасные части поставляются с 6-месячной гарантией. </p>
+		</div>
+		
+        <div class="col-md-6">
+			<h4 class="title">Какова средняя продолжительность ремонта?</h4>
+            <p>Мы стараемся отремонтировать ваше устройство в максимально короткие сроки.
+Диагностика составляет от 15 до 30 минут. Поэтому среднее время ремонта от 2 часов. </p>
+		</div>
+		
+        <div class="col-md-6">
+			<h4 class="title">Уронил телефон в воду</h4>
+            <p>Некоторые считают, что положить телефон в чашу с рисом решит все ваши проблемы. Но это не так, и иногда ущерб уже неисправим. </p>
+		</div>
+		
+        <div class="col-md-6">
+			<h4 class="title">Могу ли я передать свое устройство через знакомых?</h4>
+            <p>Да. Но нам важно сохранять связь с владельцем устройства, чтобы избежать каких либо дальнейших проблем. </p>
+		</div>
+		
+	</div>
+    </div>
+</div>
 {% endblock %}

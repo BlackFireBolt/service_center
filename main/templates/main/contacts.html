@@ -1,23 +1,132 @@
 {% extends "layout/basic.html" %}
 
+{% load static %}
+{% load easy_maps_tags %}
+
+{% block title %}
+    Контакты
+{% endblock title %}
+
+{% block header %}
+<div class="page-header page-header-other header-filter clear-filter blue-filter" data-parallax="true" style="background-image: url({% static 'img/bg-test.jpg' %});">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="title">Контакты</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock header %}
+
 {% block content %}
-<h2>Контакты</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis finibus augue, id pellentesque nisl dignissim consectetur. Aliquam 
-semper turpis dolor, dictum posuere metus rhoncus posuere. Aenean sed nunc dictum, ornare lacus quis, pulvinar justo. Mauris
- varius vitae leo sit amet suscipit. Vivamus ut lectus sem. Aenean hendrerit venenatis arcu vitae interdum. Aliquam tincidunt
-  ligula a dapibus mollis. Nunc orci turpis, aliquet vitae facilisis nec, ultricies in risus. Lorem ipsum dolor sit amet, consectetur
-   adipiscing elit. Morbi nisl arcu, porta at tortor ac, ullamcorper facilisis ligula. Suspendisse eget tellus a nibh pharetra imperdiet quis vitae nulla. 
-   Donec eu luctus mauris.</p>
-
-<p>Fusce consequat nisi vitae convallis vestibulum. Nam maximus ultrices diam, eget porta leo pulvinar vitae. Maecenas placerat est vel diam tincidunt 
-dictum. In vitae pulvinar mauris, ut varius augue. Quisque porttitor diam iaculis, egestas enim id, pellentesque ipsum. Nunc dignissim erat vitae 
-varius varius. Vestibulum varius ante placerat, auctor erat sed, vulputate neque. Nullam diam tortor, varius sed massa id, fermentum elementum urna. 
-Sed rhoncus neque in pharetra egestas. Donec eget neque eu erat scelerisque bibendum. Duis ullamcorper tristique aliquet. Fusce auctor posuere sem, 
-eget malesuada sem vehicula sed. Phasellus viverra tincidunt euismod. Aenean in dui neque.</p>
-
-<p>Sed auctor ligula eget enim auctor tristique. Donec lacinia tellus at eros iaculis laoreet. Nullam tincidunt lacus dignissim arcu eleifend tempus. 
-Sed malesuada pretium dolor vitae facilisis. Phasellus rutrum iaculis blandit. Sed auctor erat mollis est rhoncus, eget vulputate est mollis. 
-Suspendisse nec erat malesuada, auctor mauris ut, condimentum risus. Integer blandit mi urna. Sed faucibus nisl a quam semper, in tempor risus consectetur. 
-Curabitur a magna varius odio pulvinar interdum. Suspendisse id purus condimentum, tincidunt erat nec, gravida sem. Nulla suscipit urna est, sed egestas 
-felis faucibus at. Nullam molestie nisi massa, ac rutrum nisi pulvinar at.</p>
+<div class="container">
+{% if messages %}
+    {% for message in messages %}
+        {% if message.level == 85 %}
+    <div class="alert alert-success">
+        <div class="container">
+          <div class="alert-icon">
+            <i class="material-icons">check</i>
+          </div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+          </button>
+          <b>Success Alert:</b> Yuhuuu! You've got your $11.99 album from The Weeknd
+        </div>
+      </div>
+{% elif message.level == 80 %}
+      <div class="alert alert-danger">
+        <div class="container">
+          <div class="alert-icon">
+            <i class="material-icons">error_outline</i>
+          </div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+          </button>
+          <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good excuse for your Boss...
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+{% endif %}
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                <div class="card card-nav-tabs">
+                    <h4 class="card-header card-header-info card-title">Напишите нам</h4>
+                    <div class="card-body">
+                        <form action="{% url 'feedback:feedback_view' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="form-group col-md-6 ml-auto mr-auto">
+                                    <label for="inputName">Ваше имя*</label>
+                                    <input name="name" class="form-control" id="inputName" aria-describedby="emailHelp" placeholder="Введите ваше имя"></input>
+                                </div>
+                                <div class="form-group col-md-6 ml-auto mr-auto">
+                                    <label for="inputPhone">Телефон*</label>
+                                    <input name="phone" class="form-control" id="inputPhone" placeholder="Номер телефона"></input>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                <input name="email" class="form-control" id="inputEmail" placeholder="Ваш email"></input>
+                            </div> 
+                            <div class="form-group">
+                                <label for="inputMessage">Ваше сообщение</label>
+                                <textarea name="message" class="form-control" id="inputMessage" placeholder="Ваше сообщение" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-info">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ml-auto mr-auto">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Как нас найти</h4>
+                        <h6 class="card-subtitle mb-2">Fix My Device</h6>
+                        <p class="card-text">г. Минск, ул. Сурганова 57Б</p>
+                        <p class="card-text mb-4">ТЦ "Европа"</p>
+                        <h6 class="card-subtitle mb-2">Время работы</h6>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Понедельник-Пятница</td>
+                                    <td>10:00 - 19:00</td>
+                                </tr>
+                                <tr>
+                                    <td>Суббота</td>
+                                    <td>10:00 - 17:00</td>
+                                </tr>
+                                <tr>
+                                    <td>Воскресенье</td>
+                                    <td>Выходной</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a class="card-link" rel="tooltip" title=""  href="https://twitter.com/CreativeTim" target="_blank" data-original-title="Follow us on Twitter">
+                            <i class="fa fa-twitter"></i> Twitter
+                        </a>
+                        <a class="card-link" rel="tooltip" title=""  href="https://www.facebook.com/CreativeTim" target="_blank" data-original-title="Like us on Facebook">
+                            <i class="fa fa-facebook-square"></i> Facebook
+                        </a>
+                        <a class="card-link" rel="tooltip" title=""  href="https://www.instagram.com/CreativeTimOfficial" target="_blank" data-original-title="Follow us on Instagram">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            {% easy_map "Minsk, Surganova 57B"  640 480 using "easy_maps/map.html" %}
+        </div> 
+    </div>
+</div>
 {% endblock %}

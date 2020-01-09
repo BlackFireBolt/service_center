@@ -1,105 +1,172 @@
+<!--
+ =========================================================
+ * Material Kit - v2.0.6
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/material-kit
+ * Copyright 2019 Creative Tim (http://www.creative-tim.com)
+   Licensed under MIT (https://github.com/creativetimofficial/material-kit/blob/master/LICENSE.md)
+
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+
 {% load bootstrap4 %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-	    <link rel="icon" type="image/ico" href="{% static '/images/favicon.ico' %}">
-        <title>Сервисный центр</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
-        <link rel="stylesheet" href="{% static 'css/aos.css' %}">
-        <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
-        <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    </head>
-    <body>
 
-        <div class="main-section">
-            <!-- START nav --> 
-	        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	            <div class="container">
-	                <a class="navbar-brand" href="{% url 'main:index' %}">Сервисный центр.</a>
-	                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	                    <span class="oi oi-menu"></span>
-					    Menu
-	                </button>
-	                <div class="collapse navbar-collapse" id="ftco-nav">
-	                    <ul class="navbar-nav ml-auto">
-	                        <li class="nav-item"><a href="#" class="nav-link icon d-flex align-items-center"><i class="ion-logo-facebook"></i><span class="d-lg-none ml-2">Facebook</span></a></li>
-	                        <li class="nav-item"><a href="#" class="nav-link icon d-flex align-items-center"><i class="ion-logo-twitter"></i><span class="d-lg-none ml-2">Twitter</span></a></li>
-	                        <li class="nav-item"><a href="#" class="nav-link icon d-flex align-items-center"><i class="ion-logo-instagram"></i><span class="d-lg-none ml-2">Instagram</span></a></li>
-	                    </ul>
-	                </div>
-		        </div>
-	        </nav>
-            <!-- END nav -->
-	        <!-- START background -->
-  	        <section class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg-test.jpg' %});" data-stellar-background-ratio="0.5">
-  		        <div class="overlay"></div>
-  		        <div class="container">
-  			        <div class="row description js-fullheight align-items-center justify-content-center">
-  				        <div class="col-md-8 text-center">
-  					        <div class="text">
-  						        <h1 class="mb-4"><span>Сервисный</span></h1>
-								  <h1 class="mb-4"><span>центр</span></h1>
-  					        </div>
-  				        </div>
-  			        </div>
-  		        </div>
-  		        <div class="mouse">
-				    <a href="#" class="mouse-icon rounded-circle bg-danger">
-					    <div class="mouse-wheel"><span class="ion-ios-arrow-round-down text-light"></span></div>
-				    </a>
-		        </div>
-  	        </section>
-            <!-- END background -->
-	        <!-- START main section -->
-            <section class="ftco-section goto-here pb-0">
-                <div class="container basic">
-                    {% bootstrap_messages %}
-                    {% block content %}
-                    {% endblock %}
-                </div>
-	        <div class="container">
-		        <h2>Lorem ipsum dolor sit amet</h2>
-		        {% lorem %}
-	        </div>
-            </section>
-            <!-- END main section -->
-	        <!-- START footer -->
-	        <footer class="ftco-section ftco-section-2">
-	  	        <div class="col-md-12 text-center">
-                    <p class="mb-0">
-                        <script>document.write(new Date().getFullYear());</script> All rights reserved | Спрограммировано Болтиковым А.В.</a>
-                    </p>
-                </div>
-	        </footer>
-            <!-- END footer -->
+<head>
+  <meta charset="utf-8" />
+  <!-- <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">-->
+  <link rel="icon" type="image/ico" href="{% static '/img/favicon2.ico' %}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    FixMyDevice
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="{% static 'css/material-kit.css' %}" rel="stylesheet" />
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+</head>
+
+<body class="index-page sidebar-collapse">
+<button class="btn btn-fab btn-round" onclick="topFunction()" id="topButton" title="Go to top">
+<i class="material-icons">arrow_upward</i>
+</button> 
+  <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg bg-blue" color-on-scroll="100" id="sectionsNav">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="{% url 'main:index' %}">
+        <div>
+          <img src="{% static '/img/logo.png' %}" alt="FixMyDevice" class="img-fluid">
+          </div>
+          </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'main:index' %}">Главная</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'main:other' page="contacts" %}">Контакты</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'main:other' page="about" %}">О нас</a>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% block header %}
+  <div class="page-header header-filter clear-filter blue-filter" data-parallax="true" style="background-image: url({% static 'img/bg-test.jpg' %});">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          
+          <h1 class="title">FixMyDevice</h1>
+          <h4>Быстрый и качественный ремонт ваших телефонов, планшетов, ноутбуков и смартчасов. Проблемы случаются, в том числе и с нашей любимой техникой, и наша задача - устранить их. Наши специалисты проведут диагностику и ремонт вашего устройства в максимально короткие сроки.</h4>
+        
         </div>
+        
+      </div>
+    </div>
+  </div>
+  {% endblock header %}
+  
+  <div class="main main-raised">
+  {% bootstrap_messages %}
+                    {% block content %}
+  {% endblock %}
+  </div>
+  <!--  End Modal -->
+  <footer class="footer" data-background-color="black">
+    <div class="container">
+      <div class="row">
+      <div class="col-4">
+      <img src="{% static '/img/logo-blue.png' %}">
+      <p align="left">Ремонт телефонов, планшетов, ноутбуков, смартчасов</p>
+      </div>
+      <div class="col-4">
+      <h3 class="title">Страницы</h3>
+<ul>
+    <li><a href="{% url 'main:index' %}">Главная</a></li>
+    <li><a href="{% url 'main:other' page="contacts" %}">Контакты</a></li>
+    <li><a href="{% url 'main:other' page="about" %}">О нас</a></li>
+</ul>
+      </div>
+      <div class="col-4"><h3 class="title">Ремонт</h3>
+      <ul>
+    <li><a href="{% url 'main:index' %}">Ремонт телефонов</a></li>
+    <li><a href="{% url 'main:other' page="contacts" %}">Ремонт ноутбуков/MacBook</a></li>
+    <li><a href="{% url 'main:other' page="about" %}">Ремонт планшетов</a></li>
+</ul>
 
-        <!-- loader -->
-        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-		    <script src="{% static 'js/jquery.min.js' %}"></script>
-            <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
-            <script src="{% static 'js/popper.min.js' %}"></script>
-            <script src="{% static 'js/bootstrap.min.js' %}"></script>
-            <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
-            <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-            <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
-            <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-            <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-            <script src="{% static 'js/aos.js' %}"></script>
+      </div>
+      <div class="col-4"><h3 class="title">Контакты</h3>
+      <ul>
+    <li>Phone: +375 33 6083333 </li>
+    <li>+375 44 5923333</li>
+    <li>Email: fmdmobservice@gmail.com</li>
+    <li>Find Us: г. Минск, ул Сурганова 57б,</li>
+    <li> ТЦ "Европа"</li>
+</ul>
+      </div>
+      </div>
+      
+    </div>
+    <div class="copyright">
+        &copy;
+        <script>
+          document.write(new Date().getFullYear())
+        </script>, FixMyDevice by E.K. All Rights Reserved.
+      </div>
+  </footer>
+  <!--   Core JS Files   -->
+  <script src="{% static 'js/core/jquery.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/core/popper.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/core/bootstrap-material-design.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/plugins/moment.min.js' %}"></script>
+  <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+  <script src="{% static 'js/plugins/bootstrap-datetimepicker.js' %}" type="text/javascript"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="{% static 'js/plugins/nouislider.min.js' %}" type="text/javascript"></script>
+  <!--  Google Maps Plugin    -->
+  <!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>-->
+  <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+  <script src="{% static 'js/material-kit.js' %}" type="text/javascript"></script>
+  <script>
+    $(document).ready(function() {
+      //init DateTimePickers
+      materialKit.initFormExtendedDatetimepickers();
 
-            <script src="{% static 'js/nouislider.min.js' %}"></script>
-            <script src="{% static 'js/moment-with-locales.min.js' %}"></script>
-            <script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
-            <script src="{% static 'js/main.js' %}"></script>
-    </body>
+      // Sliders Init
+      materialKit.initSliders();
+    });
+
+
+    function scrollToDownload() {
+      if ($('.section-download').length != 0) {
+        $("html, body").animate({
+          scrollTop: $('.section-download').offset().top
+        }, 1000);
+      }
+    }
+
+  </script>
+   <button onclick="topFunction()" id="topButton" title="Go to top">Top</button> 
+</body>
+
 </html>

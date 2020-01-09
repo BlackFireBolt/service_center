@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import Http404, HttpResponse
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
+from django.views.generic.list import ListView
 
-from .models import Device, Service, Manufacturer
+from .models import Device, Service, Manufacturer, Type, Category
 
 def index(request):
     categories = Manufacturer.objects.all()
@@ -18,3 +19,12 @@ def other_page(request, page):
     except TemplateDoesNotExist:
         raise Http404
     return HttpResponse(template.render(request=request))
+
+class ManufacturerView(ListView):
+    model = Manufacturer
+    #template_name = 'main/search_results.html'
+
+    def get_queryset(self): 
+        query = self.request.GET.get('q')
+        object_list = Manufacturer.objects.filter(Q(title__icontains=query))
+        return object_list
