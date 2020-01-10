@@ -2,12 +2,19 @@ bcrypt==3.1.7
 beautifulsoup4==4.8.1
 cffi==1.13.2
 cryptography==2.8
+dj-database-url==0.5.0
 Django==2.2.7
+django-appconf==1.0.3
 django-bootstrap4==1.0.1
+django-classy-tags==0.9.0
 django-cleanup==4.0.0
+django-easy-maps==1.0.2
 django-extensions==2.2.5
 django-grappelli==2.13.2
 django-storages==1.8
+geographiclib==1.50
+geopy==1.20.0
+gunicorn==20.0.4
 paramiko==2.6.0
 Pillow==6.2.1
 pkg-resources==0.0.0
@@ -18,3 +25,4 @@ pytz==2019.3
 six==1.13.0
 soupsieve==1.9.5
 sqlparse==0.3.0
+whitenoise==5.0.1
