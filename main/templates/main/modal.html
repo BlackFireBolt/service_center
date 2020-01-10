@@ -1,4 +1,4 @@
-<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-dialog" role="document">
 	<div class="modal-content">
 		<div class="modal-header">
 			<h5 class="modal-title">{{ device_current.category }} {{ device_current.name }}</h5>
@@ -10,7 +10,7 @@
 			<div class="row">
                 <div class="col-xs-6 col-md-4">
                 {% if device_current.image %}
-                <img src="{{ device_current.image.url }}" class="device-image">
+                <img src="{{ device_current.image.url }}" class="device-image css-adaptive">
                 {% endif %}
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-8">

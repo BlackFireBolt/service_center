@@ -8,8 +8,10 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <div class="section">
       <div class="container">
-	  <div class="row justify-content-center">
+	  <div class="row ">
+<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center">
 	   <h2 class="title">Выберите тип устройства<br></h2>
+	   </div>
 	   </div>
 {% if categories %}
 	  <div class="row justify-content-center" id="firstLevel">
@@ -70,7 +72,7 @@
 								                            <div class="col">
 															<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#device{{ device.id }}">{{ device.name }}</button>
 
-															<div class="modal fade" id="device{{ device.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+															<div class="modal" id="device{{ device.id }}" tabindex="-1" role="dialog" aria-hidden="true">
 															    {% include 'main/modal.html' with device_current=device %}
 									                        </div>
 </div>
@@ -103,10 +105,12 @@
     </div>
 
 
-	<div class="section section-basic">
+	<div class="section">
       <div class="container ">
 	  <div class="row justify-content-center">
+	  <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center">
       <h2 class="title">Выкупим ваше мобильное устройство!</h2>
+	  </div>
       </div>
 	  </div>
     </div>
@@ -118,11 +122,11 @@
       <div class="container">
       <div class="row">
 	  
-	  <div class="col-lg-6 col-md col-sm">
-	  <img src="{% static '/img/Layer-1-485x392.png' %}">
+	  <div class="col-xs-12 col-sm-12 col-md-6">
+	  <img src="{% static '/img/Layer-1-485x392.png' %}" class="css-adaptive">
 	  </div>
 	  
-	  <div class="col-lg-6 col-md col-sm">
+	  <div class="col-xs-12 col-sm-12 col-md-6">
 	  <h3 class="title">Только качественный и быстрый ремонт</h3>
                                         <h4 class="subheading">Квалифицированные специалисты</h4>
                                         <p>Мы знаем, что ваше устройство важно для вас, поэтому мы стремимся сделать ремонт как можно быстрее.</p>
@@ -143,13 +147,17 @@
       </div>
     </div>
     
-	<div class="section section-basic">
+	<div class="section">
       <div class="container">
-      <div class="row justify-content-center">
+      <div class="row">
+	  <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center">
     <h2 class="title">Часто задаваемые вопросы</h2>
 	</div>
-	<div class="row justify-content-center">
+	</div>
+	<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center">
 	<h3 class="subheading">Не бойтесь спрашивать!</h3>
+	</div>
     </div>
     <div class="row">
 
@@ -185,13 +193,16 @@
     </div>
 </div>
 
-	<div class="section section-basic">
+	<div class="section">
       <div class="container">
-	  <div class="row justify-content-center"><h2 class="title">Наше месторасположение</h2></div>
-      <div class="row justify-content-center">
-	  
-            {% easy_map "Minsk, Surganova 57B"  640 480 using "easy_maps/map.html" %}
+	  <div class="row">
+	  <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center"><h2 class="title">Наше месторасположение</h2></div>
+		  </div>
+      <div class="row">
+	  <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center">
+            <iframe src="https://maps.google.com/maps?q=fix%20my%20device&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed" style="border: 0px none; pointer-events: none;" allowfullscreen="" width="600" height="450" frameborder="0"></iframe>
+            </div>
         </div> 
-      </div>
     </div>
+</div>
 {% endblock %}

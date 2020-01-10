@@ -1,0 +1,41 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %}
+    Каталог цен
+{% endblock title %}
+
+{% block header %}
+<div class="page-header page-header-other header-filter clear-filter blue-filter" data-parallax="true" style="background-image: url({% static 'img/bg-test.jpg' %});">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="title">Каталог цен</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="section">
+    <div class="container">
+<div>
+<h5 class="title">{{ device.category }} {{ device.name }}</h5>
+                {% if device.image %}
+                <img src="{{ device.image.url }}" class="device-image">
+                {% endif %}
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-8">
+                {% if services %}
+                {% for service in services %}
+                {% if device.id == service.device_id %}
+                <p>{{ service.title }} ----- {{ service.price }}</p>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                </div>
+                </div></div>
+{% endblock %}

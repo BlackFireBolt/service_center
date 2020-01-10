@@ -20,11 +20,15 @@ def other_page(request, page):
         raise Http404
     return HttpResponse(template.render(request=request))
 
-class ManufacturerView(ListView):
-    model = Manufacturer
-    #template_name = 'main/search_results.html'
+def catalog(request):
+    categories = Manufacturer.objects.all()
+    devices = Device.objects.all()
+    services = Service.objects.all()
+    context = {'categories': categories, 'devices': devices, 'services': services}
+    return render(request, 'main/catalog.html', context)
 
-    def get_queryset(self): 
-        query = self.request.GET.get('q')
-        object_list = Manufacturer.objects.filter(Q(title__icontains=query))
-        return object_list
+def detail_device(request, pk):
+    device = get_object_or_404(Device, pk=pk)
+    services = Service.objects.all()
+    context = {'device': device, 'services': services}
+    return render(request, 'main/detail_device.html', context)
