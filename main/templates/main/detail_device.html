@@ -22,20 +22,56 @@
 {% block content %}
 <div class="section">
     <div class="container">
-<div>
-<h5 class="title">{{ device.category }} {{ device.name }}</h5>
-                {% if device.image %}
-                <img src="{{ device.image.url }}" class="device-image">
-                {% endif %}
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-8">
+<div><h3 class="title">Ремонт {{ device.category }} {{ device.name }}</h3></div>
+<div><p>В нашем сервисном центре можно быстро осуществить ремонт {{ device.category }} {{ device.name }}, 
+причем делается это качественно и с продолжительной гарантией как на сами работы, так и на запасные детали.
+Ремонт {{ device.category }} {{ device.name }} в Минске начинается с проведения качественной диагностики, в результате которой удастся 
+быстро установить причину возникновения поломки, а также определить способы ее устранения.
+</p></div>
+<div class="parent">
+<div class="div1"> {% if device.image %}
+                <img src="{{ device.image.url }}" class="device-image css-adaptive">
+                {% endif %}</div>
+<div class="div2">
+<div class="container-fluid">
                 {% if services %}
-                {% for service in services %}
+                <table class="table table-striped custab">
+    <thead>
+        <tr>
+            
+            <th>Тип ремонта</th>
+            <th>Цена, .р</th>
+        </tr>
+    </thead>{% for service in services %}
                 {% if device.id == service.device_id %}
-                <p>{{ service.title }} ----- {{ service.price }}</p>
-                {% endif %}
+            <tr>
+                <td>{{ service.title }} </td>
+                <td>{{ service.price }}</td>
+            </tr>
+            {% endif %}
                 {% endfor %}
-                {% endif %}
-                </div>
+    </table>
+    {% endif %}
+    </div>
+    </div>
+</div> 
+
+
                 </div></div>
+
+                 <div class="section">
+      <div class="container">
+	  <div class="row justify-content-center">
+	  <div class="col-xs-12 col-sm-12 col-md-6 mt-2 mt-sm-2">
+      <h3 class="title">Бесплатная диагностика</h3>
+            <p>Бесплатная диагностика, срочный ремонт, все запчасти в наличии - мы делаем все, чтобы решить вашу проблему на 100%. </p>
+	  </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 mt-2 mt-sm-2">
+      <h3 class="title">Гарантия</h3>
+            <p>Гарантия 90 дней на всю отремонтированную нами технику!</p>
+	  </div>
+      </div>
+	  </div>
+    </div> 
+
 {% endblock %}

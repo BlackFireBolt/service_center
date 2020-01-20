@@ -21,12 +21,10 @@
 
 {% block content %}
 <div class="section">
-      <div class="container">
-	  <div class="row justify-content-center">
-	   <h2 class="title">Каталог цен<br></h2>
-	   </div>
-
-{% if categories %}
+<div class="container">
+            <div class="col-md-12">
+                <center>
+                    {% if categories %}
 
 	  
 	            {% for category in categories %}
@@ -64,7 +62,141 @@
                 {% endfor %}
 
 {% endif %}
+{% if categories %}
+                        <div class="panel-group" id="accordion7" role="tablist" aria-multiselectable="true">
+                        {% for category in categories %}
+                    {% ifchanged category.super_category %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading{{ category.super_category.name }}">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion7" href="#collapse{{ category.super_category.name }}" aria-expanded="true" aria-controls="collapse{{ category.super_category.name }}">
+                                            {{ category.super_category.name }}
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse{{ category.super_category.name }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{ category.super_category.name }}">
+                                    <div class="panel-body">
+                                        {% for category_manufacturer in categories %}
+                                    {% if category.super_category.name == category_manufacturer.super_category.name %}
+<div class="panel-group" id="accordion7" role="tablist" aria-multiselectable="true">
+                                 <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading{{ category_manufacturer.name }}">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion7" href="#collapse{{ category_manufacturer.name }}" aria-expanded="false" aria-controls="collapse{{ category_manufacturer.name }}">
+                                            {{ category_manufacturer.name }}
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse{{ category_manufacturer.name }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ category_manufacturer.name }}">
+                                    <div class="panel-body">
+                                        {% if devices %}
+                                    {% for device in devices %}
+								                    {% if category_manufacturer.id == device.category_id %}
 
-       </div>
-       </div>
+<a href="{% url 'main:detail_device' pk=device.id %}">{{ device.name }}</a>
+
+													{% endif %}
+												{% endfor %}
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+</div>
+                                    {% endif %}
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endifchanged %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </center>
+            </div>
+        </div>
+        </div>
+
+      <div class="section">
+      <div class="container">
+	  <div class="row justify-content-center">
+	  <div class="col-xs-12 col-sm-12 col-md-6 mt-2 mt-sm-2">
+      <h3 class="title">Бесплатная диагностика</h3>
+            <p>Бесплатная диагностика, срочный ремонт, все запчасти в наличии - мы делаем все, чтобы решить вашу проблему на 100%. </p>
+	  </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 mt-2 mt-sm-2">
+      <h3 class="title">Гарантия</h3>
+            <p>Гарантия 90 дней на всю отремонтированную нами технику!</p>
+	  </div>
+      </div>
+	  </div>
+    </div> 
+
+<div class="section section-accordion">
+    <div class="container">
+            <div class="col-md-12">
+                <center>
+                    
+                        <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne5">
+                                    <h3 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion5" href="#collapseOne5" aria-expanded="true" aria-controls="collapseOne5">
+                                            Телефон не включается
+                                        </a>
+                                    </h3> 
+                                </div>
+                                <div id="collapseOne5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne5">
+                                    <div class="panel-body">
+                                        <p align="justify" class="accordion-text">Причин, по которым не включается телефон, существует очень много. Поломка может возникнуть из-за механического повреждения девайса, естественного износа комплектующих, окисления контактов, сбоя программного обеспечения, неисправности системной платы и других. Если причину, по которой перестал работать телефон, визуально определить не получается, необходимо проведение комплексной диагностики устройства, которая в сервисном центре «X-Repair» бесплатна.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo5">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#collapseTwo5" aria-expanded="false" aria-controls="collapseTwo5">
+                                           Не работает экран на телефоне
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="collapseTwo5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo5">
+                                    <div class="panel-body">
+                                        <p align="justify" class="accordion-text">Если экран телефона потрескался или полностью разбился, очевидно, что без замены дисплейного модуля никак не обойтись. В том случае, если дисплей перестал включаться вообще или возникли проблемы с изображением (размытая картинка, разводы, полосы, пятна, битые пиксели), потребуется диагностика, без которой разобраться в причинах поломки не сможет даже опытный специалист.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingThree5">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#collapseThree5" aria-expanded="false" aria-controls="collapseThree5">
+                                            Не работает сенсор на телефоне
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="collapseThree5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree5">
+                                    <div class="panel-body">
+                                        <p align="justify" class="accordion-text">В основном эта поломка возникает из-за механического повреждения телефона, негативного воздействия влаги или выхода из строя различных комплектующих. Например, после удара или падения смартфона, может выйти из строя печатная плата или ее отдельные компоненты. Только после проведения диагностики можно точно определить, какой именно элемент вышел из строя.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo5">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#collapseFour5" aria-expanded="false" aria-controls="collapseTwo5">
+                                           Телефон не заряжается
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="collapseFour5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo5">
+                                    <div class="panel-body">
+                                        <p align="justify" class="accordion-text">Постоянные подзарядки, многочасовой интернет-серфинг, игры и различные приложения приводят к преждевременному износу аккумулятора телефона. Также причиной, по которой телефон не заряжается, может стать сильный удар, падение девайса в воду, вздутие батареи, сильный перегрев (переохлаждение) и другие поломки, определить которые можно только в нашем сервисном центре.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    
+                </center>
+            </div>
+        </div>
+        </div>
     {% endblock %}

@@ -571,7 +571,7 @@ sup {
 }
 
 a {
-  color: #9c27b0;
+  color: #1B3250;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -4253,6 +4253,7 @@ tbody.collapse.show {
   content: "";
   background: no-repeat center center;
   background-size: 100% 100%;
+  border-color: rgb(255,102,203);
 }
 
 @media (max-width: 575.98px) {
@@ -10943,7 +10944,7 @@ legend {
 }
 
 a {
-  color: #9c27b0;
+  color: #1B3250;
 }
 
 a:hover,
@@ -14126,7 +14127,7 @@ textarea {
 }
 .navbar.bg-blue{
   color: #fff;
-  background-color: #004094 !important;
+  background-color: rgba(0, 64, 148, 0.637) !important;
   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(0, 64, 148, 0.46);
 }
 
@@ -18164,6 +18165,14 @@ ul.timeline > li:before {
   background: #f3f2f5;
 }
 
+.section-carousel {
+  background: #5bc0de;
+}
+
+.section-accordion {
+  background: #3895E0;
+}
+
 .second-level {
   display: none;
 }
@@ -18287,3 +18296,266 @@ section .section-title {
   max-width: 100%;
   height: auto;
   }
+
+  /******************* Accordion Demo - 5 *****************/
+#accordion5 .panel{
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 0 15px 50px;
+}
+#accordion5 .panel-title a{
+    display: block;
+    padding: 10px 20px 10px 60px;
+    background: #226290;
+    border-radius: 30px;
+    border: 2px solid #226290;
+    font-size: 20px;
+    font-weight:400;
+    color: #fff;
+    position: relative;
+}
+#accordion5 .panel-title a.collapsed{
+    border: 2px solid #cae6f4;
+    background: #fff;
+    color: black;
+}
+#accordion5 .panel-title a:before,
+#accordion5 .panel-title a.collapsed:before{
+    content: "\f068";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background: #226290;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    border-right: 3px solid #fff;
+    position: absolute;
+    top: -10px;
+    left: -30px;
+    z-index: 1;
+    transition: all 0.3s ease 0s;
+}
+#accordion5 .panel-title a.collapsed:before{
+    content: "\f067";
+    background: #cae6f4;
+    border: none;
+}
+#accordion5 .panel-body{
+    padding: 10px 15px 0;
+    margin: 0 0 0 30px;
+    border: none;
+    font-size: 14px;
+    color: #333;
+    line-height: 28px;
+    position: relative;
+}
+#accordion5 .panel-body:before{
+    content: "";
+    display: block;
+    width: 5px;
+    height: 90%;
+    background: #226290;
+    position: absolute;
+    top: 0;
+    left: -30px;
+}
+#accordion5 .panel-body:after{
+    content: "";
+    border-top: 20px solid #226290;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    position: absolute;
+    bottom: 0;
+    left: -48px;
+}
+
+.accordion-text {
+  color: white;
+  font-size: 120%;
+}
+
+#accordion7{
+  padding-right: 24px;
+  padding-left: 24px;
+  z-index: 1;
+}
+#accordion7 .panel{
+  border: none;
+  box-shadow: none;
+}
+#accordion7 .panel-heading{
+  padding: 0;
+  border-radius: 0;
+  border: none;
+}
+#accordion7 .panel-title{
+  padding: 0;
+}
+#accordion7 .panel-title a{
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  background: #8198B6;
+  color: #1B3250;
+  padding: 15px 25px;
+  position: relative;
+  margin-left: -24px;
+  transition: all 0.3s ease 0s;
+}
+#accordion7 .panel-title a.collapsed{
+  background: #b4cbe9;
+  color: #1B3250;
+  margin-left: 0;
+  transition: all 0.3s ease 0s;
+}
+#accordion7 .panel-title a:before{
+  content: "";
+  border-left: 24px solid #8198B6;
+  border-top: 24px solid transparent;
+  border-bottom: 24px solid transparent;
+  position: absolute;
+  top: 0;
+  right: -24px;
+  transition: all 0.3s ease 0s;
+}
+#accordion7 .panel-title a.collapsed:before{
+  border-left-color: #1B3250;
+}
+#accordion7 .panel-title a:after{
+  content: "\f106";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 30%;
+  right: 15px;
+  font-size: 18px;
+  color: #1B3250;
+}
+#accordion7 .panel-title a.collapsed:after{
+  content: "\f107";
+  color: #1B3250;
+}
+#accordion7 .panel-collapse{
+  position: relative;
+}
+#accordion7 .panel-collapse.in:before{
+  content: "";
+  border-right: 24px solid #1B3250;
+  border-bottom: 18px solid transparent;
+  position: absolute;
+  top: 0;
+  left: -24px;
+}
+#accordion7 .panel-body{
+  font-size: 14px;
+  color: #333;
+  background: #e4e4e4;
+  border-top: none;
+  z-index: 1;
+}
+
+/* carousel */
+
+@media (min-width: 768px) {
+  /* show 3 items */
+  .carousel-inner .active,
+  .carousel-inner .active + .carousel-item,
+  .carousel-inner .active + .carousel-item + .carousel-item {
+    display: block;
+  }
+
+  .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+  .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+  .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+    transition: none;
+  }
+
+  .carousel-inner .carousel-item-next,
+  .carousel-inner .carousel-item-prev {
+    position: relative;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+    position: absolute;
+    top: 0;
+    right: -33.3333%;
+    z-index: -1;
+    display: block;
+    visibility: visible;
+  }
+
+  /* left or forward direction */
+  .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+  .carousel-item-next.carousel-item-left + .carousel-item,
+  .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+  .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+    position: relative;
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  /* farthest right hidden item must be abso position for animations */
+  .carousel-inner .carousel-item-prev.carousel-item-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: block;
+    visibility: visible;
+  }
+
+  /* right or prev direction */
+  .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+  .carousel-item-prev.carousel-item-right + .carousel-item,
+  .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+  .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+    position: relative;
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+    display: block;
+    visibility: visible;
+  }
+}
+
+.back-button {
+  display: flex;
+    justify-content: center;
+}
+
+.card-button {
+  z-index: 1000;
+}
+
+/* detail */
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  }
+  
+  .div1 { grid-area: 1 / 1 / 6 / 2; }
+  .div2 { grid-area: 1 / 2 / 6 / 5; }
+
+  .custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
+    
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(9,55,244, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    }

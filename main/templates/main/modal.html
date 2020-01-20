@@ -1,7 +1,7 @@
 <div class="modal-dialog" role="document">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h5 class="modal-title">{{ device_current.category }} {{ device_current.name }}</h5>
+			<h3 class="modal-title">Ремонт {{ device_current.category }} {{ device_current.name }}</h3>
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
@@ -15,11 +15,22 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-8">
                 {% if services %}
-                {% for service in services %}
-                {% if device_current.id == service.device_id %}
-                <p>{{ service.title }} ----- {{ service.price }}</p>
-                {% endif %}
+                <table class="table table-striped custab">
+    <thead>
+        <tr>
+            
+            <th>Тип ремонта</th>
+            <th>Цена, .р</th>
+        </tr>
+    </thead>{% for service in services %}
+                {% if device.id == service.device_id %}
+            <tr>
+                <td>{{ service.title }} </td>
+                <td>{{ service.price }}</td>
+            </tr>
+            {% endif %}
                 {% endfor %}
+    </table>
                 {% endif %}
                 </div>
             </div>

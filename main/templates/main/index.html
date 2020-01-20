@@ -5,104 +5,154 @@
 {% load easy_maps_tags %}
 
 {% block content %}
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<div class="section">
-      <div class="container">
-	  <div class="row ">
-<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center">
-	   <h2 class="title">Выберите тип устройства<br></h2>
-	   </div>
-	   </div>
-{% if categories %}
-	  <div class="row justify-content-center" id="firstLevel">
-	  
-	            {% for category in categories %}
-                    {% ifchanged category.super_category %}
-					<div class="col">
-					<button class="btn btn-primary btn-round" id="{{ category.super_category.name }}Button">{{ category.super_category.name }}</button>
-                   </div> 
-				   {% endifchanged %}
-                {% endfor %}
-	  </div>
+<!--<script src="https://code.jquery.com/jquery-3.4.1.js"></script>-->
+<div class="section section-carousel">
+    <div class="container">
+        <div class="container-fluid">
+            <h1 class="text-center mb-3 title">Выберите тип устройства</h1>
+                {% if categories %}
+                    <div class="carousel-calculator" id="firstLevel">
 
-	            {% for category in categories %}
-				{% ifchanged category.super_category %}
-	  <div class="row justify-content-center second-level" id="{{ category.super_category.name }}">
-	  
-	                            {% for category_manufacturer in categories %}
+                        {% for category in categories %}
+                            {% ifchanged category.super_category %} 
+                                <div>
+
+                                    <div class="card" style="width: 20rem;">
+                                        <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ category.super_category.name }}</h4>
+                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                            <button class="btn btn-info btn-round card-button" id="{{ category.super_category.name }}Button">{{ category.super_category.name }}</button>
+                                        </div>
+                                    </div>
+
+                                </div> 
+                            {% endifchanged %}
+                        {% endfor %}
+
+                    </div>
+
+                    {% for category in categories %}
+                        {% ifchanged category.super_category %}
+                            <div class="second-level carousel-calculator" id="{{ category.super_category.name }}">
+
+                                {% for category_manufacturer in categories %}
                                     {% if category.super_category.name == category_manufacturer.super_category.name %}
-									<div class="col">
-									<button class="btn btn-primary btn-round" id="{{ category_manufacturer.name }}Button">{{ category_manufacturer.name }}</button>
-								    </div>
-									{% endif %}
-								{% endfor %}
-								<div class="col">
-								<button class="btn btn-primary btn-round" id="{{ category.super_category.name }}BackButton">Назад</button>
-								</div>
-								<script>
-				                  $("#{{ category.super_category.name }}Button").click(function(){
-					                        $("#firstLevel").hide("slow", function(){
-												$("#{{ category.super_category.name }}").show("slow");
-												});
-					                        
-					                          });
+                                        <div>
+      
+                                            <div class="card" style="width: 20rem;">
+                                                <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">{{ category_manufacturer.name }}</h4>
+                                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                    <button class="btn btn-info btn-round" id="{{ category_manufacturer.name }}Button">{{ category_manufacturer.name }}</button>
+                                                </div>
+                                            </div>
 
-										$("#{{ category.super_category.name }}BackButton").click(function(){
-					$("#{{ category.super_category.name }}").hide("slow", function(){
-						$("#firstLevel").show("slow");
-					});
-					
-					});	  
-				                </script>
-	  
-	  </div>
-	  {% endifchanged %}
-	             {% endfor %}
-	
-	  {% for category in categories %}
-	  {% ifchanged category.super_category %}
-	  {% for category_manufacturer in categories %}
-       {% if category.super_category.name == category_manufacturer.super_category.name %}
-	   {% if devices %}
-	  <div class="row justify-content-center third-level" id="{{ category_manufacturer.name }}">
-	  
-	  
-								                {% for device in devices %}
-								                    {% if category_manufacturer.id == device.category_id %}
-								                            <div class="col">
-															<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#device{{ device.id }}">{{ device.name }}</button>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
 
-															<div class="modal" id="device{{ device.id }}" tabindex="-1" role="dialog" aria-hidden="true">
-															    {% include 'main/modal.html' with device_current=device %}
-									                        </div>
-</div>
-													{% endif %}
-												{% endfor %}
-											<div class="col">
-											<button class="btn btn-primary btn-round" id="{{ category_manufacturer.name }}BackButton">Назад</button>
-								 </div>
-								 <script>
+                            
+                            </div>
+                            <div class="second-level" id="{{ category.super_category.name }}BackButtonDiv">
+					                      <button class="btn btn-info btn-round" id="{{ category.super_category.name }}BackButton">Назад</button>
+                            </div>
+           <script>
+				    $("#{{ category.super_category.name }}Button").click(function(){
+					$("#firstLevel").hide("slow", function(){
+                        
+							            $("#{{ category.super_category.name }}").show("slow", function(){
+                                         $(".carousel-calculator").slick("refresh");   
+                                        });
+                          $("#{{ category.super_category.name }}BackButtonDiv").show("slow");
+                          
+										});    
+					                    });
+					$("#{{ category.super_category.name }}BackButton").click(function(){
+					                    $("#{{ category.super_category.name }}").hide("slow", function(){
+                                        $("#{{ category.super_category.name }}BackButtonDiv").hide("slow");
+                                        
+						                $("#firstLevel").show("slow", function(){
+                                         $(".carousel-calculator").slick("refresh");   
+                                        });
+                                       
+                                        
+					                    });
+					                    });	  
+				</script>
+                        {% endifchanged %}
+                    {% endfor %}
+
+                    {% for category in categories %}
+                        {% ifchanged category.super_category %}
+                            {% for category_manufacturer in categories %}
+                                {% if category.super_category.name == category_manufacturer.super_category.name %}
+                                    {% if devices %}
+                                        <div class="third-level carousel-calculator" id="{{ category_manufacturer.name }}">
+    
+                                            {% for device in devices %}
+                                                {% if category_manufacturer.id == device.category_id %}
+                                                    <div>
+      
+                                                        <div class="card" style="width: 20rem;">
+                                                            <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">{{ device.name }}</h4>
+                                                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#device{{ device.id }}">{{ device.name }}</button>
+
+															
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+    
+                                        </div>
+                                        <div class="third-level" id="{{ category_manufacturer.name }}BackButtonDiv">
+											                      <button class="btn btn-info btn-round" id="{{ category_manufacturer.name }}BackButton">Назад</button>
+								                        </div>
+                                        <script>
 				                  $("#{{ category_manufacturer.name }}Button").click(function(){
+                                            $("#{{ category.super_category.name }}BackButtonDiv").hide("slow");
 					                        $("#{{ category.super_category.name }}").hide("slow");
-					                        $("#{{ category_manufacturer.name }}").show("slow");
+                                            
+                                            $("#{{ category_manufacturer.name }}BackButtonDiv").show("slow");
+                                            $("#{{ category_manufacturer.name }}").show("slow", function(){
+                                         $(".carousel-calculator").slick("refresh");   
+                                        });
 					                          });
 
 										$("#{{ category_manufacturer.name }}BackButton").click(function(){
+                      $("#{{ category_manufacturer.name }}BackButtonDiv").hide("slow");
 					$("#{{ category_manufacturer.name }}").hide("slow");
-					$("#{{ category.super_category.name }}").show("slow");
+                    
+					
+                    $("#{{ category.super_category.name }}BackButtonDiv").show("slow");
+                    $("#{{ category.super_category.name }}").show("slow", function(){
+                                         $(".carousel-calculator").slick("refresh");   
+                                        });
 					});	  
-				                </script>
+				                                </script>
 
-	  
-	  </div>
-	  {% endif %}
-	  {% endif %}
-	{% endfor %}
-	{% endifchanged %}
-	{% endfor %}
-{% endif %}
-	  </div>
-    </div>
+                                    {% endif %}
+	                              {% endif %}
+	                          {% endfor %}
+	                      {% endifchanged %}
+	                  {% endfor %}
+                       <button class="btn btn-primary btn-round" id="refresh">reboot</button>
+                       <script>
+                       $("#refresh").click(function(){
+                       $(".carousel-calculator").slick("refresh");
+                       });
+                       </script>
+                {% endif %}
+</div>
+</div>
+</div>
+
 
 
 	<div class="section">
@@ -196,13 +246,26 @@
 	<div class="section">
       <div class="container">
 	  <div class="row">
-	  <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center"><h2 class="title">Наше месторасположение</h2></div>
+	  <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center"><h3 class="title">Наше месторасположение</h3></div>
 		  </div>
       <div class="row">
-	  <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center">
-            <iframe src="https://maps.google.com/maps?q=fix%20my%20device&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed" style="border: 0px none; pointer-events: none;" allowfullscreen="" width="600" height="450" frameborder="0"></iframe>
+	  <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="container">
+            <iframe src="https://maps.google.com/maps?q=fix%20my%20device&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed" style="border: 0px none; pointer-events: auto;" allowfullscreen="" width="100%" height="450" frameborder="0"></iframe>
             </div>
-        </div> 
+            </div>
     </div>
 </div>
+</div>
+{% endblock %}
+
+
+{% block module_init %}
+{% if devices %}
+{% for device in devices %}
+    <div class="modal" id="device{{ device.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+		{% include 'main/modal.html' with device_current=device %}
+	</div>
+{% endfor %}
+{% endif %}
 {% endblock %}
