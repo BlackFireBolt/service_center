@@ -28,11 +28,11 @@
 Ремонт {{ device.category }} {{ device.name }} в Минске начинается с проведения качественной диагностики, в результате которой удастся 
 быстро установить причину возникновения поломки, а также определить способы ее устранения.
 </p></div>
-<div class="parent">
-<div class="div1"> {% if device.image %}
+<div class="row">
+<div class="col-s-12 col-md-4"> {% if device.image %}
                 <img src="{{ device.image.url }}" class="device-image css-adaptive">
                 {% endif %}</div>
-<div class="div2">
+<div class="col-s-12 col-md-8">
 <div class="container-fluid">
                 {% if services %}
                 <table class="table table-striped custab">

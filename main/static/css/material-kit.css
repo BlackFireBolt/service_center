@@ -4511,7 +4511,7 @@ tbody.collapse.show {
 
 .navbar-light .navbar-toggler {
   color: rgba(0, 0, 0, 0.5);
-  border-color: rgba(0, 0, 0, 0.1);
+  /*border-color: rgba(0, 0, 0, 0.1);*/
 }
 
 .navbar-light .navbar-toggler-icon {
@@ -4562,7 +4562,7 @@ tbody.collapse.show {
 
 .navbar-dark .navbar-toggler {
   color: rgba(255, 255, 255, 0.5);
-  border-color: rgba(255, 255, 255, 0.1);
+  /* border-color: rgba(255, 255, 255, 0.1); */
 }
 
 .navbar-dark .navbar-toggler-icon {
@@ -14002,8 +14002,8 @@ textarea {
   position: relative;
   color: inherit;
   padding: 0.9375rem;
-  font-weight: 400;
-  font-size: 12px;
+  font-weight: 600;
+  font-size: 16px;
   text-transform: uppercase;
   border-radius: 3px;
   line-height: 20px;
@@ -14100,7 +14100,7 @@ textarea {
   height: 50px;
   font-size: 1.125rem;
   line-height: 30px;
-  padding: 0.625rem 0;
+  padding: 0.2rem 0;
 }
 
 .navbar.bg-primary {
@@ -14211,9 +14211,9 @@ textarea {
 }
 
 .navbar.bg-dark {
-  color: #fff;
+  /*color: #fff;
   background-color: #212121 !important;
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46); */
 }
 
 .navbar.bg-dark .dropdown-item:hover,
@@ -18103,7 +18103,7 @@ footer .pull-center {
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background-color: #2980b9; /* Set a background color */
+  background-color: #00bcd4; /* Set a background color */
   color: white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 15px; /* Some padding */
@@ -18112,7 +18112,7 @@ footer .pull-center {
 }
 
 #topButton:hover {
-  background-color: #3498db; /* Add a dark-grey background on hover */
+  background-color: #1AD6EE; /* Add a dark-grey background on hover */
 }
 
 /* timeline */
@@ -18532,7 +18532,7 @@ section .section-title {
   z-index: 1000;
 }
 
-/* detail */
+/* detail 
 .parent {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -18543,7 +18543,7 @@ section .section-title {
   
   .div1 { grid-area: 1 / 1 / 6 / 2; }
   .div2 { grid-area: 1 / 2 / 6 / 5; }
-
+*/
   .custab{
     border: 1px solid #ccc;
     padding: 5px;
@@ -18556,6 +18556,5 @@ section .section-title {
     transition: 0.5s;
     }
     
-.custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(9,55,244, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    }
+/* toggler */
+

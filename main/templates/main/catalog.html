@@ -24,44 +24,6 @@
 <div class="container">
             <div class="col-md-12">
                 <center>
-                    {% if categories %}
-
-	  
-	            {% for category in categories %}
-                    {% ifchanged category.super_category %}
-					
-                    <details class="spoiler">
-                    <summary>
-{{ category.super_category.name }}
-                    </summary>
-
-                    <div>
-	                            {% for category_manufacturer in categories %}
-                                    {% if category.super_category.name == category_manufacturer.super_category.name %}
-									<details class="spoiler">
-									<summary>{{ category_manufacturer.name }}</summary>
-                                    <div>
-                                    {% if devices %}
-                                    {% for device in devices %}
-								                    {% if category_manufacturer.id == device.category_id %}
-
-<a href="{% url 'main:detail_device' pk=device.id %}">{{ device.name }}</a>
-
-													{% endif %}
-												{% endfor %}
-                                    {% endif %}
-                                    </div>
-								    </details>
-       
-									{% endif %}
-								{% endfor %}
-                             </div>
-                    </details>
-                   
-				   {% endifchanged %}
-                {% endfor %}
-
-{% endif %}
 {% if categories %}
                         <div class="panel-group" id="accordion7" role="tablist" aria-multiselectable="true">
                         {% for category in categories %}

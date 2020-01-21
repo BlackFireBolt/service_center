@@ -253,24 +253,47 @@ var better_browser = '<div class="container"><div class="better-browser row"><di
 
 
 //Get the button:
-mybutton = document.getElementById("topButton");
+//mybutton = document.getElementById("topButton");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+//window.onscroll = function() {scrollFunction()};
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
+//function scrollFunction() {
+  //if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    //mybutton.style.display = "block";
+  //} else {
+   // mybutton.style.display = "none";
+  //}
+//}
 
 // When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-} 
+//function topFunction() {
+  //document.body.scrollTop = 0; // For Safari
+  //document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+//} 
+$(function() {
+ 
+  $(window).scroll(function() {
+   
+  if($(this).scrollTop() != 0) {
+   
+  $('#topButton').fadeIn();
+   
+  } else {
+   
+  $('#topButton').fadeOut();
+   
+  }
+   
+  });
+   
+  $('#topButton').click(function() {
+   
+  $('body,html').animate({scrollTop:0},800);
+   
+  });
+   
+  });
 
 // carousel
 

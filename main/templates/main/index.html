@@ -17,12 +17,11 @@
                             {% ifchanged category.super_category %} 
                                 <div>
 
-                                    <div class="card" style="width: 20rem;">
+                                    <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category.super_category.name }}Button">
                                         <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
                                         <div class="card-body">
                                             <h4 class="card-title">{{ category.super_category.name }}</h4>
                                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                            <button class="btn btn-info btn-round card-button" id="{{ category.super_category.name }}Button">{{ category.super_category.name }}</button>
                                         </div>
                                     </div>
 
@@ -40,12 +39,11 @@
                                     {% if category.super_category.name == category_manufacturer.super_category.name %}
                                         <div>
       
-                                            <div class="card" style="width: 20rem;">
+                                            <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category_manufacturer.name }}Button">
                                                 <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
                                                 <div class="card-body">
                                                     <h4 class="card-title">{{ category_manufacturer.name }}</h4>
                                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                    <button class="btn btn-info btn-round" id="{{ category_manufacturer.name }}Button">{{ category_manufacturer.name }}</button>
                                                 </div>
                                             </div>
 
@@ -95,14 +93,11 @@
                                                 {% if category_manufacturer.id == device.category_id %}
                                                     <div>
       
-                                                        <div class="card" style="width: 20rem;">
+                                                        <div class="card" style="width: 20rem; cursor: pointer;" type="button" data-toggle="modal" data-target="#device{{ device.id }}">
                                                             <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
                                                             <div class="card-body">
                                                                 <h4 class="card-title">{{ device.name }}</h4>
                                                                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#device{{ device.id }}">{{ device.name }}</button>
-
-															
                                                             </div>
                                                         </div>
 
