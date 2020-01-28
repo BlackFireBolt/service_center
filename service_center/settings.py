@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'django_cleanup',
     'easy_maps',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -124,12 +125,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+#PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+#STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_URL = '/media/'
 
 MY_INFO = 80
 MESSAGE_LEVEL = MY_INFO
@@ -144,3 +145,22 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 django_heroku.settings(locals())
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'main/static'),
+]
+
+AWS_ACCESS_KEY_ID = 'AKIAXS7QWNTSIBO25KPB'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'fmd-static'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.eu-central-1.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_DEFAULT_ACL = None
+AWS_LOCATION = 'static'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+DEFAULT_FILE_STORAGE = 'service_center.storage_backends.MediaStorage'

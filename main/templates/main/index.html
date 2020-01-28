@@ -11,72 +11,68 @@
         <div class="container-fluid">
             <h1 class="text-center mb-3 title">Выберите тип устройства</h1>
                 {% if categories %}
-                    <div class="carousel-calculator" id="firstLevel">
-
+                    <div class="swiper-container" id="firstLevel">
+                    <div class="swiper-wrapper">
                         {% for category in categories %}
                             {% ifchanged category.super_category %} 
-                                <div>
+                                <div class="swiper-slide">
 
                                     <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category.super_category.name }}Button">
                                         <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
                                         <div class="card-body">
                                             <h4 class="card-title">{{ category.super_category.name }}</h4>
-                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                            <p class="card-text">{{ category.super_category.desc }}</p>
                                         </div>
                                     </div>
 
                                 </div> 
                             {% endifchanged %}
                         {% endfor %}
-
+                     
+                     </div>
+                     <div class="swiper-pagination"></div>
                     </div>
 
                     {% for category in categories %}
                         {% ifchanged category.super_category %}
-                            <div class="second-level carousel-calculator" id="{{ category.super_category.name }}">
-
+                            <div class="second-level swiper-container" id="{{ category.super_category.name }}">
+<div class="swiper-wrapper">
                                 {% for category_manufacturer in categories %}
                                     {% if category.super_category.name == category_manufacturer.super_category.name %}
-                                        <div>
+                                        <div class="swiper-slide">
       
                                             <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category_manufacturer.name }}Button">
                                                 <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
                                                 <div class="card-body">
                                                     <h4 class="card-title">{{ category_manufacturer.name }}</h4>
-                                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                                 </div>
                                             </div>
 
                                         </div>
                                     {% endif %}
                                 {% endfor %}
-
+</div>
+                     <div class="swiper-pagination"></div>
                             
                             </div>
                             <div class="second-level" id="{{ category.super_category.name }}BackButtonDiv">
 					                      <button class="btn btn-info btn-round" id="{{ category.super_category.name }}BackButton">Назад</button>
                             </div>
            <script>
+
+
 				    $("#{{ category.super_category.name }}Button").click(function(){
-					$("#firstLevel").hide("slow", function(){
-                        
-							            $("#{{ category.super_category.name }}").show("slow", function(){
-                                         $(".carousel-calculator").slick("refresh");   
-                                        });
-                          $("#{{ category.super_category.name }}BackButtonDiv").show("slow");
-                          
-										});    
+					                   $("#firstLevel").hide();
+                                    
+                                    $("#{{ category.super_category.name }}BackButtonDiv").show();
+							            $("#{{ category.super_category.name }}").show();
+                                         
 					                    });
 					$("#{{ category.super_category.name }}BackButton").click(function(){
-					                    $("#{{ category.super_category.name }}").hide("slow", function(){
-                                        $("#{{ category.super_category.name }}BackButtonDiv").hide("slow");
+					                    $("#{{ category.super_category.name }}").hide(500);
+                                        $("#{{ category.super_category.name }}BackButtonDiv").hide(500);
                                         
-						                $("#firstLevel").show("slow", function(){
-                                         $(".carousel-calculator").slick("refresh");   
-                                        });
-                                       
-                                        
-					                    });
+						                $("#firstLevel").show(500);
 					                    });	  
 				</script>
                         {% endifchanged %}
@@ -87,49 +83,44 @@
                             {% for category_manufacturer in categories %}
                                 {% if category.super_category.name == category_manufacturer.super_category.name %}
                                     {% if devices %}
-                                        <div class="third-level carousel-calculator" id="{{ category_manufacturer.name }}">
-    
+                                        <div class="third-level swiper-container" id="{{ category_manufacturer.name }}">
+    <div class="swiper-wrapper">
                                             {% for device in devices %}
                                                 {% if category_manufacturer.id == device.category_id %}
-                                                    <div>
+                                                    <div class="swiper-slide">
       
                                                         <div class="card" style="width: 20rem; cursor: pointer;" type="button" data-toggle="modal" data-target="#device{{ device.id }}">
-                                                            <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+                                                            <img class="card-img-top img-fluid" src="{{ device.image.url }}" alt="Card image cap">
                                                             <div class="card-body">
                                                                 <h4 class="card-title">{{ device.name }}</h4>
-                                                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                 {% endif %}
                                             {% endfor %}
-    
+    </div>
+                     <div class="swiper-pagination"></div>
                                         </div>
                                         <div class="third-level" id="{{ category_manufacturer.name }}BackButtonDiv">
 											                      <button class="btn btn-info btn-round" id="{{ category_manufacturer.name }}BackButton">Назад</button>
 								                        </div>
                                         <script>
-				                  $("#{{ category_manufacturer.name }}Button").click(function(){
-                                            $("#{{ category.super_category.name }}BackButtonDiv").hide("slow");
-					                        $("#{{ category.super_category.name }}").hide("slow");
+				                $("#{{ category_manufacturer.name }}Button").click(function(){
+                                            $("#{{ category.super_category.name }}BackButtonDiv").hide();
+					                        $("#{{ category.super_category.name }}").hide();
                                             
-                                            $("#{{ category_manufacturer.name }}BackButtonDiv").show("slow");
-                                            $("#{{ category_manufacturer.name }}").show("slow", function(){
-                                         $(".carousel-calculator").slick("refresh");   
-                                        });
-					                          });
+                                            $("#{{ category_manufacturer.name }}BackButtonDiv").show();
+                                            $("#{{ category_manufacturer.name }}").show();
+					                    });
 
-										$("#{{ category_manufacturer.name }}BackButton").click(function(){
-                      $("#{{ category_manufacturer.name }}BackButtonDiv").hide("slow");
-					$("#{{ category_manufacturer.name }}").hide("slow");
+								$("#{{ category_manufacturer.name }}BackButton").click(function(){
+                                            $("#{{ category_manufacturer.name }}BackButtonDiv").hide(500);
+					                        $("#{{ category_manufacturer.name }}").hide(500);
                     
-					
-                    $("#{{ category.super_category.name }}BackButtonDiv").show("slow");
-                    $("#{{ category.super_category.name }}").show("slow", function(){
-                                         $(".carousel-calculator").slick("refresh");   
-                                        });
-					});	  
+                                            $("#{{ category.super_category.name }}BackButtonDiv").show(500);
+                                            $("#{{ category.super_category.name }}").show(500);
+					                    });	  
 				                                </script>
 
                                     {% endif %}
@@ -137,12 +128,7 @@
 	                          {% endfor %}
 	                      {% endifchanged %}
 	                  {% endfor %}
-                       <button class="btn btn-primary btn-round" id="refresh">reboot</button>
-                       <script>
-                       $("#refresh").click(function(){
-                       $(".carousel-calculator").slick("refresh");
-                       });
-                       </script>
+                    
                 {% endif %}
 </div>
 </div>
@@ -168,7 +154,7 @@
       <div class="row">
 	  
 	  <div class="col-xs-12 col-sm-12 col-md-6">
-	  <img src="{% static '/img/Layer-1-485x392.png' %}" class="css-adaptive">
+	  <img src="{% static 'img/Layer-1-485x392.png' %}" class="css-adaptive">
 	  </div>
 	  
 	  <div class="col-xs-12 col-sm-12 col-md-6">

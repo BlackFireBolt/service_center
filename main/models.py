@@ -9,6 +9,8 @@ class Category(models.Model):
     name = models.CharField(max_length=20, db_index=True, unique=True, verbose_name='Название')
     order = models.SmallIntegerField(default=0, db_index=True, verbose_name='Порядок')
     super_category = models.ForeignKey('Type', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип устройства')
+    image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Изображение')
+    desc = models.TextField(blank=True, verbose_name='Описание')
 
 class TypeManager(models.Manager):
     def get_queryset(self):
@@ -34,14 +36,13 @@ class Manufacturer(Category):
     objects = ManufacturerManager()
 
     def __str__(self):
-        return self.name
+        return '%s - %s' % (self.super_category.name, self.name)
 
     class Meta:
         proxy = True
         ordering = ('super_category__order', 'super_category__name', 'order', 'name')
         verbose_name = 'Производитель'
         verbose_name_plural = 'Производители'
-
 
 
 class Device(models.Model):
@@ -59,8 +60,6 @@ class Device(models.Model):
         verbose_name_plural = 'Устройства'
 
 
-#service = models.ManyToManyField(Service, verbose_name='Перечень услуг')
-
 class Service(models.Model):
     device = models.ForeignKey(Device, on_delete=models.CASCADE, verbose_name='Устройство')
     title = models.CharField(max_length=30, verbose_name='Название услуги')
@@ -69,3 +68,11 @@ class Service(models.Model):
     class Meta:
         verbose_name = 'Услуга'
         verbose_name_plural = 'Услуги'
+
+class Notes(models.Model):
+    device = models.ForeignKey(Device, on_delete=models.CASCADE, verbose_name='Устройство')
+    note = models.TextField(verbose_name='Заметка')
+
+    class Meta:
+        verbose_name = 'Заметка'
+        verbose_name_plural = 'Заметки'
