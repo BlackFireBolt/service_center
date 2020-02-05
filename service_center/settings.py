@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'feedback.apps.FeedbackConfig',
     'bootstrap4',
     'django_cleanup',
-    'easy_maps',
     'storages',
 ]
 
