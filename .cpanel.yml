@@ -1,5 +1,5 @@
 ---
 deployment:
       tasks:
-        - export DEPLOYPATH=/home/fmdby/fmd_main/  # Add /<app_folder> if required
+        - export DEPLOYPATH=/home/fmdby/fmd_main/fmd_project/  # Add /<app_folder> if required
         - /bin/cp -r * $DEPLOYPATH                        #copy all recursively to $DEPLOYPATH
