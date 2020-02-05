@@ -26,7 +26,7 @@ SECRET_KEY = 'iea28f^=4ta6cc#-aee)r4qf4rcc@#k396c_1-==q7fze&=x5x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fmd.by', 'fmdby.vh121.hosterby.com']
 
 
 # Application definition
@@ -83,8 +83,15 @@ WSGI_APPLICATION = 'service_center.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'service_center.data'),
+    'ENGINE': 'django.db.backends.mysql',
+    'OPTIONS': {
+        'sql_mode': 'traditional',
+        },
+    'NAME': 'fmdby_main_bd',
+    'USER': 'fmdby_db-admin',
+    'PASSWORD': 'ji1saVlU',
+    'HOST': 'localhost',
+    'PORT': '3306',
     }
 }
 
