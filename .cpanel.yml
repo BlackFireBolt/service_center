@@ -1,6 +1,6 @@
 ---
 deployment:
       tasks:
-        - export DEPLOYPATH=/home/fmdby/fmd_main/fmd_project/  # Add /<app_folder> if required
+        - export DEPLOYPATH=/home/fmdby/fmd_main/fmd_project/*  # Add /<app_folder> if required
         - export SITEPATH=/home/fmdby/public_html/
         - /bin/rsync -rav --exclude '.git' --exclude '.cpanel.yml' --del $REPOPATH $SITEPATH 
