@@ -2,7 +2,6 @@
 
 {% load bootstrap4 %}
 {% load static %}
-{% load easy_maps_tags %}
 
 {% block content %}
 <!--<script src="https://code.jquery.com/jquery-3.4.1.js"></script>-->
@@ -18,7 +17,11 @@
                                 <div class="swiper-slide">
 
                                     <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category.super_category.name }}Button">
+                                        {% if device_current.image %}
+                                        <img class="card-img-top img-fluid" src="{{ category.super_category.image.url }}" alt="Card image cap">
+                                        {% else %}
                                         <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+                                        {% endif %}
                                         <div class="card-body">
                                             <h4 class="card-title">{{ category.super_category.name }}</h4>
                                             <p class="card-text">{{ category.super_category.desc }}</p>
@@ -42,7 +45,11 @@
                                         <div class="swiper-slide">
       
                                             <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category_manufacturer.name }}Button">
+                                                {% if device_current.image %}
+                                                <img class="card-img-top img-fluid" src="{{ category_manufacturer.image.url }}" alt="Card image cap">
+                                                {% else %}
                                                 <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+                                                {% endif %}
                                                 <div class="card-body">
                                                     <h4 class="card-title">{{ category_manufacturer.name }}</h4>
                                                 </div>
@@ -90,7 +97,11 @@
                                                     <div class="swiper-slide">
       
                                                         <div class="card" style="width: 20rem; cursor: pointer;" type="button" data-toggle="modal" data-target="#device{{ device.id }}">
+                                                            {% if device_current.image %}
                                                             <img class="card-img-top img-fluid" src="{{ device.image.url }}" alt="Card image cap">
+                                                            {% else %}
+                                                            <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+                                                            {% endif %}
                                                             <div class="card-body">
                                                                 <h4 class="card-title">{{ device.name }}</h4>
                                                             </div>
