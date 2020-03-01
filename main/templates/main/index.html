@@ -17,7 +17,7 @@
                                 <div class="swiper-slide">
 
                                     <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category.super_category.name }}Button">
-                                        {% if device_current.image %}
+                                        {% if category.super_category.image %}
                                         <img class="card-img-top img-fluid" src="{{ category.super_category.image.url }}" alt="Card image cap">
                                         {% else %}
                                         <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
@@ -45,7 +45,7 @@
                                         <div class="swiper-slide">
       
                                             <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category_manufacturer.name }}Button">
-                                                {% if device_current.image %}
+                                                {% if category_manufacturer.image %}
                                                 <img class="card-img-top img-fluid" src="{{ category_manufacturer.image.url }}" alt="Card image cap">
                                                 {% else %}
                                                 <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
@@ -97,7 +97,7 @@
                                                     <div class="swiper-slide">
       
                                                         <div class="card" style="width: 20rem; cursor: pointer;" type="button" data-toggle="modal" data-target="#device{{ device.id }}">
-                                                            {% if device_current.image %}
+                                                            {% if device.image %}
                                                             <img class="card-img-top img-fluid" src="{{ device.image.url }}" alt="Card image cap">
                                                             {% else %}
                                                             <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
