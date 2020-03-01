@@ -1,5 +1,5 @@
 ---
 deployment:
       tasks:
-        - export DEPLOYPATH=/home/fmdby/service_center/  # Add /<app_folder> if required
+        - export DEPLOYPATH=/home/fmdby/service_center/service_center  # Add /<app_folder> if required
         - /bin/cp -r * $DEPLOYPATH   
