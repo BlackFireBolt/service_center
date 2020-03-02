@@ -68,10 +68,10 @@
                             <a class="nav-link" href="{% url 'main:catalog' %}">Каталог цен</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'main:other' page="contacts" %}">Контакты</a>
+                            <a class="nav-link" href="{% url 'main:other' page='contacts' %}">Контакты</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'main:other' page="about" %}">О нас</a>
+                            <a class="nav-link" href="{% url 'main:other' page='about' %}">О нас</a>
                         </li>
                     </ul>
                 </div>
@@ -117,8 +117,8 @@
 					<h3 class="title">Страницы</h3>
 					<ul class="list-unstyled quick-links">
 						<li><a href="{% url 'main:index' %}"><i class="fa fa-angle-double-right"></i>Главная</a></li>
-						<li><a href="{% url 'main:other' page="contacts" %}"><i class="fa fa-angle-double-right"></i>Контакты</a></li>
-						<li><a href="{% url 'main:other' page="about" %}"><i class="fa fa-angle-double-right"></i>О нас</a></li>
+						<li><a href="{% url 'main:other' page='contacts' %}"><i class="fa fa-angle-double-right"></i>Контакты</a></li>
+						<li><a href="{% url 'main:other' page='about' %}"><i class="fa fa-angle-double-right"></i>О нас</a></li>
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
@@ -133,19 +133,21 @@
                         <li>Телефон:<a href="tel:+375336083333">+375 33 6083333</a></li>
 						<li><a href="tel:+375445923333">+375 44 5923333</a></li>
 						<li>Email: <a href="mailto:fmdmobservice@gmail.com">fmdmobservice@gmail.com</a></li>
-						<address><li>Как нас найти: г. Минск,</li>
-						<li>ул. Сурганова 57б, ТЦ "Европа"</li></address>
+						<address>
+                            <li>Как нас найти: г. Минск,</li>
+						    <li>ул. Сурганова 57б, ТЦ "Европа"</li>
+                        </address>
 					</ul>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
+						<!--<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>-->
+						<li class="list-inline-item"><a href="https://instagram.com/fmd.by?igshid=o6aq9mwugoy9"><i class="fa fa-instagram"></i></a></li>
+						<!--<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>-->
+						<li class="list-inline-item"><a href="mailto:fmdmobservice@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
 				</hr>
@@ -171,9 +173,9 @@
   <script src="{% static 'js/core/jquery.min.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/core/popper.min.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/core/bootstrap-material-design.min.js' %}" type="text/javascript"></script>
-  <script src="{% static 'js/plugins/moment.min.js' %}" type="text/javascript"></script>></script>
-  <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-  <script src="{% static 'js/plugins/bootstrap-datetimepicker.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/plugins/moment.min.js' %}" type="text/javascript"></script>
+  <!--Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker
+  <script src="{% static 'js/plugins/bootstrap-datetimepicker.js' %}" type="text/javascript"></script>-->
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
   <!--<script src="{% static 'js/plugins/nouislider.min.js' %}" type="text/javascript"></script>-->
   <!--  Google Maps Plugin    -->
@@ -201,7 +203,6 @@
     }
 
   </script>
-   <button onclick="topFunction()" id="topButton" title="Go to top">Top</button> 
 </body>
 
 </html>
