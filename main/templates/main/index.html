@@ -16,7 +16,7 @@
                             {% ifchanged category.super_category %} 
                                 <div class="swiper-slide">
 
-                                    <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category.super_category.name|slugify }}Button">
+                                    <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category.super_category.name|cut:' ' }}Button">
                                         {% if category.super_category.image %}
                                         <img class="card-img-top img-fluid" src="{{ category.super_category.image.url }}" alt="Card image cap">
                                         {% else %}
@@ -38,13 +38,13 @@
 
                     {% for category in categories %}
                         {% ifchanged category.super_category %}
-                            <div class="second-level swiper-container" id="{{ category.super_category.name|slugify }}">
+                            <div class="second-level swiper-container" id="{{ category.super_category.name|cut:' ' }}">
 <div class="swiper-wrapper">
                                 {% for category_manufacturer in categories %}
                                     {% if category.super_category.name == category_manufacturer.super_category.name %}
                                         <div class="swiper-slide">
       
-                                            <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category_manufacturer.name|slugify }}Button">
+                                            <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category_manufacturer.name|cut:' ' }}Button">
                                                 {% if category_manufacturer.image %}
                                                 <img class="card-img-top img-fluid" src="{{ category_manufacturer.image.url }}" alt="Card image cap">
                                                 {% else %}
@@ -62,22 +62,22 @@
                      <div class="swiper-pagination"></div>
                             
                             </div>
-                            <div class="second-level" id="{{ category.super_category.name|slugify }}BackButtonDiv">
-					                      <button class="btn btn-info btn-round" id="{{ category.super_category.name|slugify }}BackButton">Назад</button>
+                            <div class="second-level" id="{{ category.super_category.name|cut:' ' }}BackButtonDiv">
+					                      <button class="btn btn-info btn-round" id="{{ category.super_category.name|cut:' ' }}BackButton">Назад</button>
                             </div>
            <script>
 
 
-				    $("#{{ category.super_category.name|slugify }}Button").click(function(){
+				    $("#{{ category.super_category.name|cut:' ' }}Button").click(function(){
 					                   $("#firstLevel").hide();
                                     
-                                    $("#{{ category.super_category.name|slugify }}BackButtonDiv").show();
-							            $("#{{ category.super_category.name|slugify }}").show();
+                                    $("#{{ category.super_category.name|cut:' ' }}BackButtonDiv").show();
+							            $("#{{ category.super_category.name|cut:' ' }}").show();
                                          
 					                    });
-					$("#{{ category.super_category.name|slugify }}BackButton").click(function(){
-					                    $("#{{ category.super_category.name|slugify }}").hide(500);
-                                        $("#{{ category.super_category.name|slugify }}BackButtonDiv").hide(500);
+					$("#{{ category.super_category.name|cut:' ' }}BackButton").click(function(){
+					                    $("#{{ category.super_category.name|cut:' ' }}").hide(500);
+                                        $("#{{ category.super_category.name|cut:' ' }}BackButtonDiv").hide(500);
                                         
 						                $("#firstLevel").show(500);
 					                    });	  
@@ -90,7 +90,7 @@
                             {% for category_manufacturer in categories %}
                                 {% if category.super_category.name == category_manufacturer.super_category.name %}
                                     {% if devices %}
-                                        <div class="third-level swiper-container" id="{{ category_manufacturer.name|slugify }}">
+                                        <div class="third-level swiper-container" id="{{ category_manufacturer.name|cut:' ' }}">
     <div class="swiper-wrapper">
                                             {% for device in devices %}
                                                 {% if category_manufacturer.id == device.category_id %}
@@ -113,24 +113,24 @@
     </div>
                      <div class="swiper-pagination"></div>
                                         </div>
-                                        <div class="third-level" id="{{ category_manufacturer.name|slugify }}BackButtonDiv">
-											                      <button class="btn btn-info btn-round" id="{{ category_manufacturer.name|slugify }}BackButton">Назад</button>
+                                        <div class="third-level" id="{{ category_manufacturer.name|cut:' ' }}BackButtonDiv">
+											                      <button class="btn btn-info btn-round" id="{{ category_manufacturer.name|cut:' ' }}BackButton">Назад</button>
 								                        </div>
                                         <script>
-				                $("#{{ category_manufacturer.name|slugify }}Button").click(function(){
-                                            $("#{{ category.super_category.name|slugify }}BackButtonDiv").hide();
-					                        $("#{{ category.super_category.name|slugify }}").hide();
+				                $("#{{ category_manufacturer.name|cut:' ' }}Button").click(function(){
+                                            $("#{{ category.super_category.name|cut:' ' }}BackButtonDiv").hide();
+					                        $("#{{ category.super_category.name|cut:' ' }}").hide();
                                             
-                                            $("#{{ category_manufacturer.name|slugify }}BackButtonDiv").show();
-                                            $("#{{ category_manufacturer.name|slugify }}").show();
+                                            $("#{{ category_manufacturer.name|cut:' ' }}BackButtonDiv").show();
+                                            $("#{{ category_manufacturer.name|cut:' ' }}").show();
 					                    });
 
-								$("#{{ category_manufacturer.name|slugify }}BackButton").click(function(){
-                                            $("#{{ category_manufacturer.name|slugify }}BackButtonDiv").hide(500);
-					                        $("#{{ category_manufacturer.name|slugify }}").hide(500);
+								$("#{{ category_manufacturer.name|cut:' ' }}BackButton").click(function(){
+                                            $("#{{ category_manufacturer.name|cut:' ' }}BackButtonDiv").hide(500);
+					                        $("#{{ category_manufacturer.name|cut:' ' }}").hide(500);
                     
-                                            $("#{{ category.super_category.name|slugify }}BackButtonDiv").show(500);
-                                            $("#{{ category.super_category.name|slugify }}").show(500);
+                                            $("#{{ category.super_category.name|cut:' ' }}BackButtonDiv").show(500);
+                                            $("#{{ category.super_category.name|cut:' ' }}").show(500);
 					                    });	  
 				                                </script>
 
