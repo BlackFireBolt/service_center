@@ -18167,6 +18167,7 @@ ul.timeline > li:before {
 
 .section-carousel {
   background: #5bc0de;
+  border-radius: 6px;
 }
 
 .section-accordion {
@@ -18455,7 +18456,7 @@ section .section-title {
 /* carousel */
 .swiper-container {
   width: 100%;
-  height: 393;
+  height: 393px;
 }
 .swiper-slide {
   text-align: center;
