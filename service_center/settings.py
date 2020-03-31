@@ -80,26 +80,26 @@ WSGI_APPLICATION = 'service_center.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'repo-db.sqlite3'),
-    }
-}
-
 #DATABASES = {
 #    'default': {
-#    'ENGINE': 'django.db.backends.mysql',
-#   'OPTIONS': {
-#        'sql_mode': 'traditional',
-#        },
-#    'NAME': 'fmdby_main_bd',
-#    'USER': 'fmdby_db-admin',
-#    'PASSWORD': 'ji1saVlU',
-#    'HOST': 'localhost',
-#    'PORT': '3306',
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'repo-db.sqlite3'),
 #    }
 #}
+
+DATABASES = {
+    'default': {
+    'ENGINE': 'django.db.backends.mysql',
+   'OPTIONS': {
+        'sql_mode': 'traditional',
+        },
+    'NAME': 'fmdby_main_bd',
+    'USER': 'fmdby_db-admin',
+    'PASSWORD': 'ji1saVlU',
+    'HOST': 'localhost',
+    'PORT': '3306',
+    }
+}
 
 
 # Password validation
