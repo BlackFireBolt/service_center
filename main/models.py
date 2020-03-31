@@ -2,8 +2,10 @@ from django.db import models
 from datetime import datetime
 from os.path import splitext
 
+
 def get_timestamp_path(instance, filename):
     return '%s%s' % (datetime.now().timestamp(), splitext(filename)[1])
+
 
 class Category(models.Model):
     name = models.CharField(max_length=20, db_index=True, unique=True, verbose_name='Название')
@@ -12,9 +14,11 @@ class Category(models.Model):
     image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Изображение')
     desc = models.TextField(blank=True, verbose_name='Описание')
 
+
 class TypeManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(super_category__isnull=True)
+
 
 class Type(Category):
     objects = TypeManager()
@@ -28,9 +32,11 @@ class Type(Category):
         verbose_name = 'Тип'
         verbose_name_plural = 'Типы'
 
+
 class ManufacturerManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(super_category__isnull=False)
+
 
 class Manufacturer(Category):
     objects = ManufacturerManager()
@@ -62,12 +68,13 @@ class Device(models.Model):
 
 class Service(models.Model):
     device = models.ForeignKey(Device, on_delete=models.CASCADE, verbose_name='Устройство')
-    title = models.CharField(max_length=30, verbose_name='Название услуги')
+    title = models.CharField(max_length=64, verbose_name='Название услуги')
     price = models.CharField(max_length=12, verbose_name='Стоимоть услуги')
 
     class Meta:
         verbose_name = 'Услуга'
         verbose_name_plural = 'Услуги'
+
 
 class Notes(models.Model):
     device = models.ForeignKey(Device, on_delete=models.CASCADE, verbose_name='Устройство')

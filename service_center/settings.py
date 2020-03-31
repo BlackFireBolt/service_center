@@ -25,7 +25,7 @@ SECRET_KEY = 'iea28f^=4ta6cc#-aee)r4qf4rcc@#k396c_1-==q7fze&=x5x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fmd.by', 'fmdby.vh121.hosterby.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'fmd.by', 'fmdby.vh121.hosterby.com']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'django_cleanup',
     'storages',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
@@ -81,17 +82,24 @@ WSGI_APPLICATION = 'service_center.wsgi.application'
 
 DATABASES = {
     'default': {
-    'ENGINE': 'django.db.backends.mysql',
-    'OPTIONS': {
-        'sql_mode': 'traditional',
-        },
-    'NAME': 'fmdby_main_bd',
-    'USER': 'fmdby_db-admin',
-    'PASSWORD': 'ji1saVlU',
-    'HOST': 'localhost',
-    'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'repo-db.sqlite3'),
     }
 }
+
+#DATABASES = {
+#    'default': {
+#    'ENGINE': 'django.db.backends.mysql',
+#   'OPTIONS': {
+#        'sql_mode': 'traditional',
+#        },
+#    'NAME': 'fmdby_main_bd',
+#    'USER': 'fmdby_db-admin',
+#    'PASSWORD': 'ji1saVlU',
+#    'HOST': 'localhost',
+#    'PORT': '3306',
+#    }
+#}
 
 
 # Password validation
@@ -143,6 +151,17 @@ MESSAGE_LEVEL = MY_INFO
 EASY_MAPS_GOOGLE_KEY = "AIzaSyDVz8uLqWpuM_t_FmoHIRQvwzr3Rsd8Fno"
 EASY_MAPS_ZOOM = 13
 EASY_MAPS_LANGUAGE = 'ru'
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'carousel': {
+            'size': (330, 495),
+            'crop': 'scale',
+        },
+    },
+}
+THUMBNAIL_BASEDIR = 'thumbnails'
+THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'main/static'),

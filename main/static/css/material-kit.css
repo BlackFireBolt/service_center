@@ -18103,7 +18103,7 @@ footer .pull-center {
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background-color: #00bcd4; /* Set a background color */
+  background-color: rgba(0, 64, 148); /* Set a background color */
   color: white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 15px; /* Some padding */
@@ -18112,7 +18112,7 @@ footer .pull-center {
 }
 
 #topButton:hover {
-  background-color: #1AD6EE; /* Add a dark-grey background on hover */
+  background-color: #7FBFFF; /* Add a dark-grey background on hover */
 }
 
 /* timeline */
@@ -18166,7 +18166,7 @@ ul.timeline > li:before {
 }
 
 .section-carousel {
-  background: #5bc0de;
+  background: white;
   border-radius: 6px;
 }
 
@@ -18456,7 +18456,7 @@ section .section-title {
 /* carousel */
 .swiper-container {
   width: 100%;
-  height: 393px;
+  height: 610px;
 }
 .swiper-slide {
   text-align: center;
@@ -18525,4 +18525,191 @@ section .section-title {
     }
     
 /* toggler */
+/* card */
+.blog-card-blog {
+    margin-top: 30px;
+}
+.blog-card {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    color: rgba(0, 0, 0, 0.87);
+    background: #fff;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.blog-card .blog-card-image {
+    height: 60%;
+    position: relative;
+    overflow: hidden;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: -30px;
+    border-radius: 6px;
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.blog-card .blog-card-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    pointer-events: none;
+}
+.blog-card .blog-table {
+    padding: 15px 30px;
+}
+.blog-table {
+    margin-bottom: 0px;
+}
+.blog-category {
+    position: relative;
+    line-height: 0;
+    margin: 15px 0;
+}
+.blog-text-success {
+    color: #28a745!important;
+}
+.blog-card-blog .blog-card-caption {
+    margin-top: 5px;
+}
+.blog-card-caption {
+    font-weight: 700;
+    font-family: "Roboto Slab", "Times New Roman", serif;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.blog-card-caption, .blog-card-caption a {
+    color: #333;
+    text-decoration: none;
+}
 
+
+.blog-card .ftr {
+    margin-top: 15px;
+}
+.blog-card .ftr .author {
+    color: #888;
+}
+
+.blog-card .ftr div {
+    display: inline-block;
+}
+.blog-card .author .avatar {
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 5px;blog-
+}
+.blog-card .ftr .stats {
+    position: relative;
+    top: 1px;
+    font-size: 14px;
+}
+.blog-card .ftr .stats {
+    float: right;
+    line-height: 30px;
+}
+.blog-card:hover {
+    box-shadow:0 30px 70px rgba(0,0,0,.2);
+}
+/* end card */
+/* button blue */
+.btn.btn-blue {
+  color: #fff;
+  background-color: rgba(0, 64, 148);
+  border-color: rgba(0, 64, 148);
+  box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
+}
+
+.btn.btn-blue:hover {
+  color: #fff;
+  background-color: #7FBFFF;
+  border-color: #4C8CCC;
+}
+
+.btn.btn-blue:focus,
+.btn.btn-blue.focus,
+.btn.btn-blue:hover {
+  color: #fff;
+  background-color: #7FBFFF;
+  border-color: #4C8CCC;
+}
+
+.btn.btn-blue:active,
+.btn.btn-blue.active,
+.open>.btn.btn-blue.dropdown-toggle,
+.show>.btn.btn-blue.dropdown-toggle {
+  color: #fff;
+  background-color: #7FBFFF;
+  border-color: #4C8CCC;
+  box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
+}
+
+.btn.btn-blue:active:hover,
+.btn.btn-blue:active:focus,
+.btn.btn-blue:active.focus,
+.btn.btn-blue.active:hover,
+.btn.btn-blue.active:focus,
+.btn.btn-blue.active.focus,
+.open>.btn.btn-blue.dropdown-toggle:hover,
+.open>.btn.btn-blue.dropdown-toggle:focus,
+.open>.btn.btn-blue.dropdown-toggle.focus,
+.show>.btn.btn-blue.dropdown-toggle:hover,
+.show>.btn.btn-blue.dropdown-toggle:focus,
+.show>.btn.btn-blue.dropdown-toggle.focus {
+  color: #fff;
+  background-color: #7FBFFF;
+  border-color: #002666;
+}
+
+.open>.btn.btn-blue.dropdown-toggle.bmd-btn-icon {
+  color: inherit;
+  background-color: rgba(0, 64, 148);
+}
+
+.open>.btn.btn-blue.dropdown-toggle.bmd-btn-icon:hover {
+  background-color: #7FBFFF;
+}
+
+.btn.btn-blue.disabled:focus,
+.btn.btn-blue.disabled.focus,
+.btn.btn-blue:disabled:focus,
+.btn.btn-blue:disabled.focus {
+  background-color: rgba(0, 64, 148);
+  border-color: rgba(0, 64, 148);
+}
+
+.btn.btn-blue.disabled:hover,
+.btn.btn-blue:disabled:hover {
+  background-color: rgba(0, 64, 148);
+  border-color: rgba(0, 64, 148);
+}
+
+.btn.btn-blue:focus,
+.btn.btn-blue:active,
+.btn.btn-blue:hover {
+  box-shadow: 0 14px 26px -12px rgba(0, 188, 212, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 188, 212, 0.2);
+}
+
+.btn.btn-blue.btn-link {
+  background-color: transparent;
+  color: rgba(0, 64, 148);
+  box-shadow: none;
+}
+
+.btn.btn-blue.btn-link:hover,
+.btn.btn-blue.btn-link:focus,
+.btn.btn-blue.btn-link:active {
+  background-color: transparent;
+  color: rgba(0, 64, 148);
+}
+/* end button blue */
