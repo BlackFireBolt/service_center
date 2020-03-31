@@ -18456,11 +18456,11 @@ section .section-title {
 /* carousel */
 .swiper-container {
   width: 100%;
-  height: 610px;
+  height: 38.125rem;
 }
 .swiper-slide {
   text-align: center;
-  font-size: 18px;
+  font-size: 1.125rem;
 
 
   /* Center slide text vertically */
