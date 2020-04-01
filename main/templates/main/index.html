@@ -48,7 +48,7 @@
                             {% for device in devices %}
                             {% if category_manufacturer.id == device.category_id %}
                             <div class="col-12 col-md-4 col-lg-3">
-                            <div class="blog-card blog-card-blog" style="cursor: pointer; width: 20rem;" type="button" data-toggle="modal" data-target="#device{{ device.id }}">
+                            <div class="blog-card blog-card-blog" style="cursor: pointer;" type="button" data-toggle="modal" data-target="#device{{ device.id }}">
                                 <div class="blog-card-image">
                                     {% if device.image %}
                                     <img class="img" src="{% thumbnail device.image 'carousel' %}">
