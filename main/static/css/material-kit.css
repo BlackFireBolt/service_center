@@ -18456,7 +18456,8 @@ section .section-title {
 /* carousel */
 .swiper-container {
   width: 100%;
-  height: 38.125rem;
+  height:auto;
+  min-height: 100%;
 }
 .swiper-slide {
   text-align: center;
@@ -18713,3 +18714,12 @@ section .section-title {
   color: rgba(0, 64, 148);
 }
 /* end button blue */
+/* pills blue */
+.nav-pills.nav-pills-blue .nav-item .nav-link.active,
+.nav-pills.nav-pills-blue .nav-item .nav-link.active:focus,
+.nav-pills.nav-pills-blue .nav-item .nav-link.active:hover {
+  background-color: rgba(0, 64, 148);
+  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(244, 67, 54, 0.6);
+  color: #fff;
+}
+/* end pills blue */

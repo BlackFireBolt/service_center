@@ -36,3 +36,11 @@ def detail_device(request, pk):
     services = Service.objects.all()
     context = {'device': device, 'services': services}
     return render(request, 'main/detail_device.html', context)
+
+
+def slider_test(request):
+    categories = Manufacturer.objects.all()
+    devices = Device.objects.all()
+    services = Service.objects.all()
+    context = {'categories': categories, 'devices': devices, 'services': services}
+    return render(request, 'main/cards.html', context)

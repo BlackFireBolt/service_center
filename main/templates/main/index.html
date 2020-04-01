@@ -10,185 +10,75 @@
     <div class="container">
         <div class="container-fluid">
             <h1 class="text-center mb-3 title">Выберите тип устройства</h1>
-                {% if categories %}
-                    <div class="swiper-container" id="firstLevel">
-                    <div class="swiper-wrapper">
-                        {% for category in categories %}
-                            {% ifchanged category.super_category %} 
-                                <div class="swiper-slide">
+            {% if categories %}
+            <ul class="nav nav-pills nav-pills-blue justify-content-center mt-5" role="tablist">
+                {% for category in categories %}
+                {% ifchanged category.super_category %}
+                <li class="nav-item">
+                    <a class="nav-link {% if category == categories|first %}active{% endif %}" data-toggle="tab" href="#{{ category.super_category.name|cut:' ' }}" role="tablist" aria-expanded="true">
+                        {{ category.super_category.name }}
+                    </a>
+                </li>
+                {% endifchanged %}
+                {% endfor %}
+            </ul>
+            <hr>
+            <div class="tab-content tab-space">
 
-                                   <!-- <div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category.super_category.name|cut:' ' }}Button">
-                                        {% if category.super_category.image %}
-                                        <img class="card-img-top" src="{% thumbnail category.super_category.image 'carousel' %}" alt="Card image cap">
-                                        {% else %}
-                                        <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
-                                        {% endif %}
-                                        <div class="card-body">
-                                            <h4 class="card-title">{{ category.super_category.name }}</h4>
-                                            <p class="card-text">{{ category.super_category.desc }}</p>
-                                        </div>
-                                    </div>-->
-
-                                        <div class="blog-card blog-card-blog" style="cursor: pointer;" type="button" id="{{ category.super_category.name|cut:' ' }}Button">
-                                            <div class="blog-card-image">
-                                                {% if category.super_category.image %}
-                                                <img class="img" src="{% thumbnail category.super_category.image 'carousel' %}">
-                                                {% else %}
-                                                <img class="img" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
-                                                {% endif %}
-                                            </div>
-                                            <div class="blog-table">
-                                                <h4 class="blog-card-caption">
-                                                    {{ category.super_category.name }}
-                                                </h4>
-                                                <p class="blog-card-description">{{ category.super_category.desc }}</p>
-                                            </div>
-                                        </div>
-
-                                </div> 
-                            {% endifchanged %}
+                {% for category in categories %}
+                {% ifchanged category.super_category %}
+                <div class="tab-pane {% if category == categories|first %}active{% endif %}" id="{{ category.super_category.name|cut:' ' }}" aria-expanded="true">
+                    <ul class="nav nav-pills nav-pills-blue justify-content-center" role="tablist">
+                        {% for category_manufacturer in categories %}
+                        {% if category.super_category.name == category_manufacturer.super_category.name %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if category_manufacturer.order == -1 %}active{% endif %}" data-toggle="tab" href="#{{ category_manufacturer.name|cut:' ' }}" role="tablist" aria-expanded="true">
+                                {{ category_manufacturer.name }}
+                            </a>
+                        </li>
+                        {% endif %}
                         {% endfor %}
-                     
-                     </div>
-                     <div class="swiper-pagination"></div>
+                    </ul>
+                    <div class="tab-content tab-space">
+
+                        {% for category_manufacturer in categories %}
+                        {% if category.super_category.name == category_manufacturer.super_category.name %}
+                        <div class="tab-pane {% if category_manufacturer.order == -1 %}active{% endif %}" id="{{ category_manufacturer.name|cut:' ' }}" aria-expanded="true">
+                            <div class="row">
+                            {% for device in devices %}
+                            {% if category_manufacturer.id == device.category_id %}
+                            <div class="col-12 col-md-4 col-lg-3">
+                            <div class="blog-card blog-card-blog" style="cursor: pointer; width: 20rem;" type="button" data-toggle="modal" data-target="#device{{ device.id }}">
+                                <div class="blog-card-image">
+                                    {% if device.image %}
+                                    <img class="img" src="{% thumbnail device.image 'carousel' %}">
+                                    {% else %}
+                                    <img class="img" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+                                    {% endif %}
+                                </div>
+                                <div class="blog-table">
+                                    <h4 class="blog-card-caption">
+                                        {{ device.name }}
+                                    </h4>
+                                    <p class="blog-card-description">{{ device.desc }}</p>
+                                </div>
+                            </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
                     </div>
 
-                    {% for category in categories %}
-                        {% ifchanged category.super_category %}
-                            <div class="second-level swiper-container" id="{{ category.super_category.name|cut:' ' }}">
-<div class="swiper-wrapper">
-                                {% for category_manufacturer in categories %}
-                                    {% if category.super_category.name == category_manufacturer.super_category.name %}
-                                        <div class="swiper-slide">
-      
-                                            <!--<div class="card" style="width: 20rem; cursor: pointer;" type="button" id="{{ category_manufacturer.name|cut:' ' }}Button">
-                                                {% if category_manufacturer.image %}
-                                                <img class="card-img-top img-fluid" src="{{ category_manufacturer.image.url }}" alt="Card image cap">
-                                                {% else %}
-                                                <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
-                                                {% endif %}
-                                                <div class="card-body">
-                                                    <h4 class="card-title">{{ category_manufacturer.name }}</h4>
-                                                </div>
-                                            </div>-->
-                                            <div class="blog-card blog-card-blog" style="cursor: pointer;" type="button" id="{{ category_manufacturer.name|cut:' ' }}Button">
-                                                <div class="blog-card-image">
-                                                    {% if category_manufacturer.image %}
-                                                    <img class="img" src="{% thumbnail category_manufacturer.image 'carousel' %}">
-                                                    {% else %}
-                                                    <img class="img" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
-                                                    {% endif %}
-                                                </div>
-                                                <div class="blog-table">
-                                                    <h4 class="blog-card-caption">
-                                                        {{ category_manufacturer.name }}
-                                                    </h4>
-                                                    <p class="blog-card-description">{{ category_manufacturer.desc }}</p>
-                                                </div>
-                                            </div>
+                </div>
+                {% endifchanged %}
+                {% endfor %}
+            </div>
+            {% endif %}
 
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-</div>
-                     <div class="swiper-pagination"></div>
-                            
-                            </div>
-                            <div class="second-level" id="{{ category.super_category.name|cut:' ' }}BackButtonDiv">
-					                      <button class="btn btn-blue btn-round" id="{{ category.super_category.name|cut:' ' }}BackButton">Назад</button>
-                            </div>
-           <script>
-
-
-				    $("#{{ category.super_category.name|cut:' ' }}Button").click(function(){
-					                   $("#firstLevel").hide();
-                                    
-                                    $("#{{ category.super_category.name|cut:' ' }}BackButtonDiv").show();
-							            $("#{{ category.super_category.name|cut:' ' }}").show();
-                                         
-					                    });
-					$("#{{ category.super_category.name|cut:' ' }}BackButton").click(function(){
-					                    $("#{{ category.super_category.name|cut:' ' }}").hide(500);
-                                        $("#{{ category.super_category.name|cut:' ' }}BackButtonDiv").hide(500);
-                                        
-						                $("#firstLevel").show(500);
-					                    });	  
-				</script>
-                        {% endifchanged %}
-                    {% endfor %}
-
-                    {% for category in categories %}
-                        {% ifchanged category.super_category %}
-                            {% for category_manufacturer in categories %}
-                                {% if category.super_category.name == category_manufacturer.super_category.name %}
-                                    {% if devices %}
-                                        <div class="third-level swiper-container" id="{{ category_manufacturer.name|cut:' ' }}">
-    <div class="swiper-wrapper">
-                                            {% for device in devices %}
-                                                {% if category_manufacturer.id == device.category_id %}
-                                                    <div class="swiper-slide">
-      
-                                                        <!--<div class="card" style="width: 20rem; cursor: pointer;" type="button" data-toggle="modal" data-target="#device{{ device.id }}">
-                                                            {% if device.image %}
-                                                            <img class="card-img-top img-fluid" src="{{ device.image.url }}" alt="Card image cap">
-                                                            {% else %}
-                                                            <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
-                                                            {% endif %}
-                                                            <div class="card-body">
-                                                                <h4 class="card-title">{{ device.name }}</h4>
-                                                            </div>
-                                                        </div>-->
-                                                        <div class="blog-card blog-card-blog" style="cursor: pointer;" type="button" data-toggle="modal" data-target="#device{{ device.id }}">
-                                                            <div class="blog-card-image">
-                                                                {% if device.image %}
-                                                                <img class="img" src="{% thumbnail device.image 'carousel' %}">
-                                                                {% else %}
-                                                                <img class="img" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
-                                                                {% endif %}
-                                                            </div>
-                                                            <div class="blog-table">
-                                                                <h4 class="blog-card-caption">
-                                                                    {{ device.name }}
-                                                                </h4>
-                                                                <p class="blog-card-description">{{ device.desc }}</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                {% endif %}
-                                            {% endfor %}
-    </div>
-                     <div class="swiper-pagination"></div>
-                                        </div>
-                                        <div class="third-level" id="{{ category_manufacturer.name|cut:' ' }}BackButtonDiv">
-											                      <button class="btn btn-blue btn-round" id="{{ category_manufacturer.name|cut:' ' }}BackButton">Назад</button>
-								                        </div>
-                                        <script>
-				                $("#{{ category_manufacturer.name|cut:' ' }}Button").click(function(){
-                                            $("#{{ category.super_category.name|cut:' ' }}BackButtonDiv").hide();
-					                        $("#{{ category.super_category.name|cut:' ' }}").hide();
-                                            
-                                            $("#{{ category_manufacturer.name|cut:' ' }}BackButtonDiv").show();
-                                            $("#{{ category_manufacturer.name|cut:' ' }}").show();
-					                    });
-
-								$("#{{ category_manufacturer.name|cut:' ' }}BackButton").click(function(){
-                                            $("#{{ category_manufacturer.name|cut:' ' }}BackButtonDiv").hide(500);
-					                        $("#{{ category_manufacturer.name|cut:' ' }}").hide(500);
-                    
-                                            $("#{{ category.super_category.name|cut:' ' }}BackButtonDiv").show(500);
-                                            $("#{{ category.super_category.name|cut:' ' }}").show(500);
-					                    });	  
-				                                </script>
-
-                                    {% endif %}
-	                              {% endif %}
-	                          {% endfor %}
-	                      {% endifchanged %}
-	                  {% endfor %}
-                    
-                {% endif %}
-</div>
+        </div>
 </div>
 </div>
 

@@ -310,6 +310,7 @@ elem.forEach(function(item){
 
 var mySwiper = new Swiper ('.swiper-container', {
   // Optional parameters
+  autoHeight: true,
   slidesPerView: 3,
   spaceBetween: 30,
   watchOverflow: true,
