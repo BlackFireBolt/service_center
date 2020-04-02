@@ -47,7 +47,7 @@
 
                             {% for device in devices %}
                             {% if category_manufacturer.id == device.category_id %}
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#device{{ device.id }}">
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#device{{ device.id }}">
                                 {{ device.name }}
                             </button>
                             {% endif %}
