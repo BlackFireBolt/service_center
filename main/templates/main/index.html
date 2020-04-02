@@ -181,7 +181,7 @@
 {% block module_init %}
 {% if devices %}
 {% for device in devices %}
-    <div class="modal" id="device{{ device.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="device{{ device.id }}" tabindex="-1" role="dialog" aria-hidden="true">
 		{% include 'main/modal.html' with device_current=device %}
 	</div>
 {% endfor %}
