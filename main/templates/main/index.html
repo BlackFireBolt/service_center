@@ -44,15 +44,17 @@
                         {% for category_manufacturer in categories %}
                         {% if category.super_category.name == category_manufacturer.super_category.name %}
                         <div class="tab-pane justify-content-center {% if category_manufacturer.order == -1 %}active{% endif %}" id="{{ category_manufacturer.name|cut:' ' }}" aria-expanded="true">
-
+                            <div class="row">
+                                <div class="col-md-12 mx-auto">
                             {% for device in devices %}
                             {% if category_manufacturer.id == device.category_id %}
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#device{{ device.id }}">
+                            <button type="button" class="btn btn-info btn-round" data-toggle="modal" data-target="#device{{ device.id }}">
                                 {{ device.name }}
                             </button>
                             {% endif %}
                             {% endfor %}
-
+                                </div>
+                            </div>
                         </div>
                         {% endif %}
                         {% endfor %}
