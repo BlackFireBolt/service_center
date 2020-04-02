@@ -41,8 +41,13 @@
         <div class="title">
             <h2>Вторая, на данный момент в продакшне</h2>
         </div>
-        <div class="row">
-            <div class="col-md-12">
+        <ul class="nav nav-pills nav-pills-rose">
+            <li class="nav-item"><a class="nav-link active" href="#pill1" data-toggle="tab">Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="#pill2" data-toggle="tab">Settings</a></li>
+            <li class="nav-item"><a class="nav-link" href="#pill3" data-toggle="tab">Options</a></li>
+        </ul>
+        <div class="tab-content tab-space">
+            <div class="tab-pane active" id="pill1">
 
                 <div class="blog-card blog-card-blog" style="width: 20rem;">
                     <div class="blog-card-image">
@@ -65,7 +70,18 @@
                 </div>
 
             </div>
+            <div class="tab-pane" id="pill2">
+                Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
+                <br><br>Dramatically maintain clicks-and-mortar solutions without functional solutions.
+            </div>
+            <div class="tab-pane" id="pill3">
+                Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
+                <br><br>Dynamically innovate resource-leveling customer service for state of the art customer service.
+            </div>
         </div>
+
+
+
         {% if categories %}
         <div class="swiper-container" id="firstLevel">
             <div class="swiper-wrapper">
@@ -194,7 +210,7 @@
                             <h4 class="card-title">{{ device.name }}</h4>
                         </div>
                     </div>-->
-                    <div class="blog-card blog-card-blog" style="cursor: pointer;" type="button" data-toggle="modal" data-target="#device{{ device.id }}">
+                    <div class="blog-card blog-card-blog" style="cursor: pointer;" data-toggle="modal" data-target="#device{{ device.id }}">
                         <div class="blog-card-image">
                             {% if device.image %}
                             <img class="img" src="{% thumbnail device.image 'carousel' %}">
