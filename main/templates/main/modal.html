@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-lg" role="document">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h3 class="modal-title">Ремонт {{ device_current.category }} {{ device_current.name }}</h3>
+			<h3 class="modal-title title">Ремонт {{ device_current.category }} {{ device_current.name }}</h3>
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
@@ -16,25 +16,28 @@
                 <div class="col-xs-12 col-sm-6 col-md-8">
                 {% if services %}
                 <table class="table table-striped custab">
-    <thead>
-        <tr>
-            
-            <th>Тип ремонта</th>
-            <th>Цена, .р</th>
-        </tr>
-    </thead>{% for service in services %}
-                {% if device.id == service.device_id %}
-            <tr>
-                <td>{{ service.title }} </td>
-                <td>{{ service.price }}</td>
-            </tr>
-            {% endif %}
-                {% endfor %}
-    </table>
-                {% endif %}
+                    <thead>
+                    <tr>
+                        <th>Тип ремонта</th>
+                        <th>Цена, .р*</th>
+                    </tr>
+                    </thead>
+                    {% for service in services %}
+                    {% if device.id == service.device_id %}
+                    <tr>
+                        <td>{{ service.title }} </td>
+                        <td>{{ service.price }}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+                    {% endif %}
                 </div>
             </div>
         </div>
+        <h4>Вашей поломки нет в списке?</h4>
+        <p>Позвоните нам для уточнения точной стоимости и сроков по ремонту.</p>
+        <h6>*Предложение не является публичной офертой, цены приведены для ознакомления.</h6>
 		<div class="modal-footer">
             <a class="btn btn-success" href="tel:+375336083333">Позвонить нам</a>
 			<button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
