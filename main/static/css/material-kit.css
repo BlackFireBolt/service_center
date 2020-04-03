@@ -18723,3 +18723,8 @@ section .section-title {
   color: #fff;
 }
 /* end pills blue */
+/* custom modal */
+.modal-xs {
+  max-width: 1300px;
+}
+/* end custom modal */
