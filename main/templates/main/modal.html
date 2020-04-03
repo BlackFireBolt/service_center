@@ -1,6 +1,6 @@
 <div class="modal-dialog modal-xs" role="document">
 	<div class="modal-content">
-		<div class="modal-header">
+		<div class="modal-header text-center">
 			<h2 class="modal-title title">Ремонт {{ device_current.category }} {{ device_current.name }}</h2>
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
@@ -15,28 +15,29 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-8">
                 {% if services %}
-                <table class="table table-striped custab">
-                    <thead>
-                    <tr>
-                        <th>Тип ремонта</th>
-                        <th>Цена, .р*</th>
-                    </tr>
-                    </thead>
-                    {% for service in services %}
-                    {% if device.id == service.device_id %}
-                    <tr>
-                        <td>{{ service.title }} </td>
-                        <td>{{ service.price }}</td>
-                    </tr>
+                    <table class="table table-striped custab">
+                        <thead>
+                        <tr>
+                            <th>Тип ремонта</th>
+                            <th>Цена, .р*</th>
+                        </tr>
+                        </thead>
+                        {% for service in services %}
+                        {% if device.id == service.device_id %}
+                        <tr>
+                            <td>{{ service.title }} </td>
+                            <td>{{ service.price }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
                     {% endif %}
-                    {% endfor %}
-                </table>
-                    {% endif %}
+                    <h3 class="title mb-1">Вашей поломки нет в списке?</h3>
+                    <p>Позвоните нам для уточнения точной стоимости и сроков по ремонту.</p>
+                    <h6 class="title text-muted">*Предложение не является публичной офертой, цены приведены для ознакомления.</h6>
                 </div>
             </div>
-            <h3 class="title mb-1">Вашей поломки нет в списке?</h3>
-            <p>Позвоните нам для уточнения точной стоимости и сроков по ремонту.</p>
-            <h6 class="title text-muted">*Предложение не является публичной офертой, цены приведены для ознакомления.</h6>
+
         </div>
 
 		<div class="modal-footer">
